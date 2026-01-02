@@ -1,0 +1,648 @@
+/**
+ * ═══════════════════════════════════════════════════════════════════════════
+ * GLX PARTNERS - MICRO-INTERACTIONS & MODERN ANIMATIONS (2025)
+ * ═══════════════════════════════════════════════════════════════════════════
+ * 
+ * PROPÓSITO (WHY):
+ * ----------------
+ * Adicionar micro-interações modernas e animações de texto que:
+ * 1. Guiam a atenção do usuário
+ * 2. Reforçam hierarquia visual
+ * 3. Criam feedback tátil (hover, click)
+ * 4. Melhoram percepção de qualidade (premium feel)
+ * 
+ * ESTRATÉGIA DE ANIMAÇÃO (MOTION DESIGN 2025):
+ * ---------------------------------------------
+ * - Physics-based easing (cubic-bezier natural)
+ * - Stagger para grupos de elementos
+ * - Hover states com transform (não position)
+ * - Micro-delays para criar ritmo
+ * 
+ * PERFORMANCE:
+ * ------------
+ * ✓ Usa apenas transform e opacity (GPU-accelerated)
+ * ✓ will-change aplicado estrategicamente
+ * ✓ Respeita prefers-reduced-motion
+ * ✓ Sem layout thrashing
+ * 
+ * DEPENDÊNCIAS: Nenhuma (CSS puro)
+ */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   1. ANIMAÇÕES DE ENTRADA (Fade + Slide)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Fade In Up: Elementos aparecem de baixo para cima */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 40px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/* Fade In Down: Para títulos principais */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform:translate3d(0, -40px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/* Fade In: Simples fade */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Scale In: Elementos crescem suavemente */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Slide In Left: Para elementos laterais */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translate3d(-60px, 0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   2. ANIMAÇÕES DE TEXTO (Typing, Glow, Gradient)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Gradient Text Animation: Para títulos premium */
+@keyframes gradientShift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #7c3aed, #d946ef, #0ea5e9, #7c3aed);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 6s ease infinite;
+}
+
+/* Text Glow: Efeito de brilho sutil */
+@keyframes textGlow {
+    0%, 100% {
+        text-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+    }
+    50% {
+        text-shadow: 0 0 30px rgba(124, 58, 237, 0.6);
+    }
+}
+
+.glow-text {
+    animation: textGlow 3s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   3. MICRO-INTERAÇÕES (Hover, Focus, Active)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Card Lift: Cards elevam suavemente no hover */
+.card-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+
+.card-lift:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(124, 58, 237, 0.2);
+}
+
+/* Button Magnetic: Botões têm magnetismo sutil */
+.btn-magnetic {
+    position: relative;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-magnetic:hover {
+    transform: scale(1.05);
+}
+
+.btn-magnetic:active {
+    transform: scale(0.98);
+}
+
+/* Icon Bounce: Ícones saltam no hover */
+.icon-bounce {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.icon-bounce:hover {
+    transform: translateY(-4px) rotate(5deg);
+}
+
+/* Underline Expand: Sublinhado que expande */
+.underline-expand {
+    position: relative;
+    display: inline-block;
+}
+
+.underline-expand::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #7c3aed, #d946ef);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-50%);
+}
+
+.underline-expand:hover::after {
+    width: 100%;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   4. CLASSES DE ANIMAÇÃO (Aplicáveis via HTML)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Fade In Up (1s natural) */
+.animate-fadeInUp {
+    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* Fade In Down */
+.animate-fadeInDown {
+    animation: fadeInDown 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* Scale In */
+.animate-scaleIn {
+    animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* Slide In Left */
+.animate-slideInLeft {
+    animation: slideInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   5. STAGGER (Delay progressivo para grupos)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.animate-fadeInUp:nth-child(1) { animation-delay: 0.1s; }
+.animate-fadeInUp:nth-child(2) { animation-delay: 0.2s; }
+.animate-fadeInUp:nth-child(3) { animation-delay: 0.3s; }
+.animate-fadeInUp:nth-child(4) { animation-delay: 0.4s; }
+.animate-fadeInUp:nth-child(5) { animation-delay: 0.5s; }
+.animate-fadeInUp:nth-child(6) { animation-delay: 0.6s; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   6. ANIMAÇÕES DE LOADING/SKELETON
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+}
+
+/* Pulse: Para loading states */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   7. SCROLL-TRIGGERED ANIMATIONS (via Intersection Observer)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Elementos começam invisíveis */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Quando visíveis, animam */
+.scroll-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   8. MOBILE OPTIMIZATION
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Reduz animações em mobile (performance) */
+@media (max-width: 768px) {
+    .card-lift:hover {
+        transform: translateY(-4px) scale(1.01); /* Menor movimento */
+    }
+    
+    .animate-fadeInUp,
+    .animate-fadeInDown,
+    .animate-scaleIn {
+        animation-duration: 0.5s; /* Mais rápido */
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   9. UTILITÁRIOS (Performance Hints)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Force GPU acceleration para elementos que animam muito */
+.gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform, opacity;
+}
+
+/* Remove will-change após animação (evita consumo de memória) */
+.gpu-accelerated:not(:hover):not(:active):not(.animating) {
+    will-change: auto;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   10. ADVANCED ANIMATIONS (2025 LEVEL)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Magnetic Cursor (Desktop Only) */
+.magnetic-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background: rgba(124, 58, 237, 0.6);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: screen;
+    transition: width 0.3s, height 0.3s, background 0.3s;
+}
+
+.magnetic-cursor.hover {
+    width: 50px;
+    height: 50px;
+    background: rgba(217, 70, 239, 0.4);
+}
+
+/* 3D Card Tilt Base Styles */
+.glass, .card-lift {
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out;
+}
+
+/* Hover Glow Effect */
+.glass::before, .card-lift::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+        600px circle at var(--glow-x, 50%) var(--glow-y, 50%),
+        rgba(124, 58, 237, 0.15),
+        transparent 40%
+    );
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.glass.glow-active::before, .card-lift.glow-active::before {
+    opacity: 1;
+}
+
+/* Parallax Layers */
+[data-parallax] {
+    will-change: transform;
+}
+
+/* Text Split Animation */
+.char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: charReveal 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes charReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scroll Timeline Reveals */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-on-scroll.revealed {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Stagger delays for grouped elements */
+.reveal-on-scroll:nth-child(1) { transition-delay: 0.1s; }
+.reveal-on-scroll:nth-child(2) { transition-delay: 0.2s; }
+.reveal-on-scroll:nth-child(3) { transition-delay: 0.3s; }
+.reveal-on-scroll:nth-child(4) { transition-delay: 0.4s; }
+
+/* Floating Animation (Subtle) */
+@keyframes floatSoft {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.float-soft {
+    animation: floatSoft 6s ease-in-out infinite;
+}
+
+/* Premium Shine Effect (for special elements) */
+@keyframes shine {
+    0% {
+        background-position: -200% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+.premium-shine {
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shine 3s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   11. SLIDING NUMBER COMPONENT
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.stats-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 4rem 2rem;
+    margin: 4rem 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.stat-card {
+    text-align: center;
+    color: white;
+}
+
+.sliding-number {
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1;
+    display: block;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.8) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.stat-label {
+    font-size: 1.125rem;
+    font-weight: 500;
+    opacity: 0.95;
+}
+
+@media (max-width: 768px) {
+    .sliding-number {
+        font-size: 3rem;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   12. MARQUEE COMPONENT (Infinite Scroll)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.marquee {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    gap: 1rem;
+}
+
+.marquee-content {
+    flex-shrink: 0;
+    display: flex;
+    gap: 1rem;
+    min-width: 100%;
+    animation: marquee-left 60s linear infinite;
+}
+
+.marquee.paused .marquee-content {
+    animation-play-state: paused;
+}
+
+/* Animation keyframes */
+@keyframes marquee-left {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes marquee-right {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Testimonial Card Styles */
+.testimonial-card {
+    flex: 0 0 auto;
+    width: 20rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.testimonial-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(124, 58, 237, 0.3);
+    transform: translateY(-4px);
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(124, 58, 237, 0.3);
+}
+
+.author-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.author-name {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: #fff;
+}
+
+.author-role {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.testimonial-quote {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    font-style: italic;
+}
+
+/* Gradient overlays for fade effect */
+.marquee-container {
+    position: relative;
+    padding: 3rem 0;
+}
+
+.marquee-container::before,
+.marquee-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 15%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.marquee-container::before {
+    left: 0;
+    background: linear-gradient(to right, #09090b, transparent);
+}
+
+.marquee-container::after {
+    right: 0;
+    background: linear-gradient(to left, #09090b, transparent);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   13. SCROLL FLOAT TEXT (Scroll-triggered character animation)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.scroll-float {
+    overflow: hidden;
+    display: block;
+}
+
+.scroll-float-text {
+    display: inline-block;
+    font-size: clamp(1.6rem, 8vw, 4rem);
+    font-weight: 900;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.scroll-float-char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(120%) scaleY(2.3) scaleX(0.7);
+    transform-origin: 50% 0%;
+    transition-property: opacity, transform;
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.scroll-float.is-visible .scroll-float-char {
+    opacity: 1;
+    transform: translateY(0%) scaleY(1) scaleX(1);
+}
+
+/* Split Text Container (for regular char animations) */
+.split-text-container {
+    display: block;
+}
+
+.split-text-container .char {
+    display: inline-block;
+}

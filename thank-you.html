@@ -1,223 +1,277 @@
 <!DOCTYPE html>
-
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Thank You - Lean Health Consultancy</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitação Recebida | GLX Partners</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link crossorigin="" rel="preconnect" href="https://fonts.gstatic.com"/>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="js/email-config.js"></script>
+    <script>
         tailwind.config = {
-            darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#7c3bed",
-                        "background-light": "#f7f6f8",
-                        "background-dark": "#171121",
-                        "surface-dark": "#231a33",
-                        "accent-pink": "#d946ef",
+                        primary: "#7c3aed",
+                        secondary: "#d946ef",
+                        accent: "#0ea5e9",
+                        "background-dark": "#09090b",
                     },
                     fontFamily: {
-                        "display": ["Inter", "sans-serif"]
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
                     },
-                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                    backgroundImage: {
+                        'hero-glow': 'radial-gradient(circle at center, #4c1d95 0%, #09090b 100%)',
+                        'grid-white': "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath d='M0 40 L40 40 L40 0' fill='none' stroke='rgba(255,255,255,0.03)' stroke-width='1'/%3E%3C/svg%3E\")",
+                    }
                 },
             },
-        }
+        };
     </script>
-<style>
-        .gradient-text {
-            background: linear-gradient(to right, #ffffff, #d946ef);
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #fff 0%, #a78bfa 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .glow-effect {
-            box-shadow: 0 0 40px -10px rgba(124, 59, 237, 0.3);
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+        }
+        .animate-pulse-slow { animation: pulse-slow 8s infinite; }
+        
+        .modal-overlay {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+        }
+        
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden min-h-screen flex flex-col">
-<!-- Navbar -->
-<header class="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-[#312447] bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
-<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-<div class="flex items-center justify-between h-16">
-<div class="flex items-center gap-3">
-<div class="size-8 text-primary">
-<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-<path d="M24 4C12.95 4 4 12.95 4 24H24V4Z" fill="currentColor"></path>
-<path d="M24 44C35.05 44 44 35.05 44 24H24V44Z" fill="currentColor" fill-opacity="0.6"></path>
-<path d="M44 24C44 12.95 35.05 4 24 4V24H44Z" fill="currentColor" fill-opacity="0.3"></path>
-<path d="M4 24C4 35.05 12.95 44 24 44V24H4Z" fill="currentColor" fill-opacity="0.8"></path>
-</svg>
-</div>
-<span class="text-lg font-bold tracking-tight dark:text-white">Lean Health</span>
-</div>
-<div class="hidden md:flex items-center gap-8">
-<a class="text-sm font-medium hover:text-primary transition-colors dark:text-gray-300" href="#">Home</a>
-<a class="text-sm font-medium hover:text-primary transition-colors dark:text-gray-300" href="#">Services</a>
-<a class="text-sm font-medium hover:text-primary transition-colors dark:text-gray-300" href="#">Case Studies</a>
-<a class="text-sm font-medium hover:text-primary transition-colors dark:text-gray-300" href="#">About</a>
-</div>
-<div class="flex items-center gap-4">
-<button class="hidden md:flex items-center justify-center rounded-lg h-9 px-4 bg-primary hover:bg-primary/90 transition-colors text-white text-sm font-bold shadow-lg shadow-primary/25">
-                        Get Free Analysis
-                    </button>
-<button class="md:hidden text-gray-500 dark:text-white">
-<span class="material-symbols-outlined">menu</span>
-</button>
-</div>
-</div>
-</div>
-</header>
-<!-- Main Content -->
-<main class="flex-grow flex flex-col items-center justify-center relative py-12 px-4 sm:px-6">
-<!-- Background decorative elements -->
-<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
-<div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent-pink/10 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
-<div class="max-w-4xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-<!-- Left Column: Success Message -->
-<div class="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
-<div class="flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 border border-primary/20 text-primary mb-2 animate-bounce">
-<span class="material-symbols-outlined text-5xl">check_circle</span>
-</div>
-<div class="space-y-4">
-<h1 class="text-4xl sm:text-5xl font-black tracking-tight dark:text-white">
-                        Request <br/><span class="gradient-text">Received!</span>
-</h1>
-<p class="text-lg text-gray-600 dark:text-gray-300 max-w-md mx-auto lg:mx-0 leading-relaxed">
-                        Thank you for reaching out. We are reviewing your details and are excited to help transform your healthcare processes.
+<body class="bg-background-dark text-slate-100 font-sans antialiased min-h-screen flex items-center justify-center overflow-x-hidden">
+    
+    <!-- Content Wrapper (will be blurred when modal is open) -->
+    <div id="mainContent" class="relative z-10 w-full max-w-2xl px-6 py-12 transition-all duration-500">
+        <!-- Background Elements -->
+        <div class="fixed inset-0 bg-hero-glow -z-10"></div>
+        <div class="fixed inset-0 bg-grid-white -z-10"></div>
+        <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] animate-pulse-slow -z-10"></div>
+
+        <div class="glass p-8 md:p-16 rounded-[3rem] text-center shadow-2xl border border-white/10">
+            <!-- Icon -->
+            <div class="w-20 h-20 rounded-3xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white mx-auto mb-8 shadow-lg shadow-primary/20">
+                <span class="material-symbols-rounded text-4xl">check_circle</span>
+            </div>
+
+            <!-- Title -->
+            <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-6 text-white leading-tight">
+                Solicitação <span class="text-gradient">Recebida!</span>
+            </h1>
+
+            <!-- Message -->
+            <p class="text-slate-400 text-lg md:text-xl leading-relaxed mb-10">
+                Obrigado pelo contato. Nossos consultores sêniores já iniciaram a análise técnica dos seus dados operacionais.
+            </p>
+
+            <!-- SLA / Business Rule Box -->
+            <div class="bg-white/5 border border-primary/20 rounded-2xl p-6 mb-10 flex flex-col md:flex-row items-center gap-4 text-left">
+                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+                    <span class="material-symbols-rounded">schedule</span>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-base uppercase tracking-wider">Tempo Estimado de Resposta</h4>
+                    <p class="text-slate-400 text-sm">
+                        Com base na nossa política de alta performance, você receberá o retorno da sua avaliação inicial em até <span class="text-primary font-bold">2 horas</span> via E-mail ou WhatsApp.
                     </p>
-</div>
-<div class="flex flex-col sm:flex-row gap-4 pt-4 w-full sm:w-auto">
-<a class="flex items-center justify-center rounded-lg h-12 px-6 bg-surface-dark border border-gray-700 hover:border-primary/50 text-white font-medium transition-all w-full sm:w-auto group" href="#">
-<span class="mr-2">Return to Home</span>
-<span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span>
-</a>
-</div>
-</div>
-<!-- Right Column: Timeline / Next Steps Card -->
-<div class="relative w-full">
-<!-- Card Container -->
-<div class="relative bg-white dark:bg-surface-dark border border-gray-200 dark:border-[#463366] rounded-2xl p-8 glow-effect overflow-hidden">
-<!-- Subtle top gradient line -->
-<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent-pink"></div>
-<h2 class="text-xl font-bold dark:text-white mb-6 flex items-center gap-2">
-<span class="material-symbols-outlined text-primary">rocket_launch</span>
-                        What happens next?
-                    </h2>
-<!-- Timeline Component -->
-<div class="grid grid-cols-[32px_1fr] gap-x-4">
-<!-- Step 1 -->
-<div class="flex flex-col items-center">
-<div class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/20 text-primary ring-2 ring-background-light dark:ring-surface-dark">
-<span class="material-symbols-outlined text-sm font-bold">mail</span>
-</div>
-<div class="w-0.5 bg-gray-200 dark:bg-[#463366] h-full my-2"></div>
-</div>
-<div class="pb-8 pt-1">
-<h3 class="text-base font-semibold dark:text-white">Check your Email or WhatsApp</h3>
-<p class="text-sm text-gray-500 dark:text-[#a692c8] mt-1">
-                                We've sent a confirmation link immediately. Please check your spam folder if you don't see it.
-                            </p>
-</div>
-<!-- Step 2 -->
-<div class="flex flex-col items-center">
-<div class="flex items-center justify-center w-8 h-8 rounded-full bg-background-light dark:bg-[#312447] text-gray-400 dark:text-gray-300 ring-2 ring-background-light dark:ring-surface-dark">
-<span class="material-symbols-outlined text-sm font-bold">edit_document</span>
-</div>
-<div class="w-0.5 bg-gray-200 dark:bg-[#463366] h-full my-2"></div>
-</div>
-<div class="pb-8 pt-1">
-<h3 class="text-base font-semibold dark:text-white">Complete Preliminary Form</h3>
-<p class="text-sm text-gray-500 dark:text-[#a692c8] mt-1">
-                                A short form is included in the message to help us understand your current workflow challenges.
-                            </p>
-</div>
-<!-- Step 3 -->
-<div class="flex flex-col items-center">
-<div class="flex items-center justify-center w-8 h-8 rounded-full bg-background-light dark:bg-[#312447] text-gray-400 dark:text-gray-300 ring-2 ring-background-light dark:ring-surface-dark">
-<span class="material-symbols-outlined text-sm font-bold">calendar_month</span>
-</div>
-</div>
-<div class="pt-1">
-<h3 class="text-base font-semibold dark:text-white">Schedule Optional Consultation</h3>
-<p class="text-sm text-gray-500 dark:text-[#a692c8] mt-1">
-                                Ready to talk? Use the provided Calendly link to book a free 30-min strategy call.
-                            </p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- "While you wait" Teaser Section -->
-<div class="max-w-4xl w-full mt-20 sm:mt-32">
-<div class="flex flex-col sm:flex-row justify-between items-end gap-6 mb-8 border-b border-gray-200 dark:border-[#312447] pb-4">
-<div>
-<h3 class="text-2xl font-bold dark:text-white">Explore Our Impact</h3>
-<p class="text-gray-600 dark:text-[#a692c8] mt-2">See how we've optimized workflows while you wait.</p>
-</div>
-<a class="text-primary hover:text-accent-pink font-semibold text-sm flex items-center gap-1 transition-colors" href="#">
-                    View all Case Studies <span class="material-symbols-outlined text-lg">arrow_forward</span>
-</a>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<!-- Feature 1 -->
-<div class="group relative rounded-xl overflow-hidden aspect-[4/3] bg-surface-dark">
-<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 opacity-60 mix-blend-overlay" data-alt="Abstract blue gradient pattern representing technology flow" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDJJ0hr5dyj000OC-kuP0DtEB-M5niPEAybDbVn8KTATGh0xr8L1dG-EeV7TAJtrDgXKCo0iNR6bDRuY62GDfNCX-xEAl9uYhlqwCcWsxTxDoZZ-mt3ZZZ_FqxfihWpYuycMSiSg6fMBb6w9dfH01cH3xtptg5kbf2q3GkYpz9SOXqspOGjNsN4JkAz0Xp-gGLb18WdRy-01k7Bf34Mc_Kxbg25HtkS5pPwkQjUtjenES9kBZ85vDqL_JnPZtbdnE1Q48iS98vnZiI');"></div>
-<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/50 to-transparent"></div>
-<div class="absolute bottom-0 left-0 p-5">
-<div class="text-primary mb-2">
-<span class="material-symbols-outlined">emergency</span>
-</div>
-<h4 class="text-white font-bold text-lg leading-tight">Emergency Room Efficiency</h4>
-<p class="text-gray-400 text-xs mt-1">Reduced wait times by 40%</p>
-</div>
-</div>
-<!-- Feature 2 -->
-<div class="group relative rounded-xl overflow-hidden aspect-[4/3] bg-surface-dark">
-<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 opacity-60 mix-blend-overlay" data-alt="Abstract purple geometric shapes representing structure" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDz4OvCbQo9jtcapncrEt7WG-euGNei2Gs0ZLP0C1PYDMYUI6y7LLcR-sM6c_gq8uxjjD53B9Ws0fW3N3aO7Zn5SbdsZd3mEu8YMfcboxip6krvOxAwFsbYa5oYfiAOkWzEuqJsSj2mBUCUq1Lm0f3e8X7MfFZsEc2lfAL2EHIT1Oxow5ugwYlQtckY7xhA0v7MuJOL_eejl_F4_20bRk4HMX9ZMPQrusghJQgXB9ZiCS6XpA_NshGth-vEcA8Ef6x2hVFdOVfMwhs');"></div>
-<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/50 to-transparent"></div>
-<div class="absolute bottom-0 left-0 p-5">
-<div class="text-accent-pink mb-2">
-<span class="material-symbols-outlined">diversity_1</span>
-</div>
-<h4 class="text-white font-bold text-lg leading-tight">Patient Intake Streamlining</h4>
-<p class="text-gray-400 text-xs mt-1">Paperless within 3 weeks</p>
-</div>
-</div>
-<!-- Feature 3 -->
-<div class="group relative rounded-xl overflow-hidden aspect-[4/3] bg-surface-dark">
-<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 opacity-60 mix-blend-overlay" data-alt="Abstract dark network nodes connection graphic" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB1MwQzqHlkAAOX-SW1Ex9cYngBy_op06uRzXFj_8EN62k6JfnSC4G9qFru-2x8BjxrfZhjjeYPL0v0Qetvo39BztnEBlDPpyx-sNtpfnUeYYslzP0SH5L__omMOfrAQSmUREtZr-tkUI26Nrc57EgrtQp2Lqhj2-1xNL9tGlM0YwFX4O8LG9Y2c9iHafGqBEIebqHqRF_TtmWkeprmMs2e5NnamaHOiZLogiC69mMgIF3PSae_vqFOcBbqNxeZhY4D6JZuLtrpQ5s');"></div>
-<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/50 to-transparent"></div>
-<div class="absolute bottom-0 left-0 p-5">
-<div class="text-white mb-2">
-<span class="material-symbols-outlined">inventory_2</span>
-</div>
-<h4 class="text-white font-bold text-lg leading-tight">Inventory Management</h4>
-<p class="text-gray-400 text-xs mt-1">Saved $200k annually</p>
-</div>
-</div>
-</div>
-</div>
-</main>
-<!-- Footer -->
-<footer class="border-t border-gray-200 dark:border-[#312447] bg-white dark:bg-background-dark py-8 mt-auto">
-<div class="max-w-[960px] mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
-<p class="text-gray-500 dark:text-[#a692c8] text-sm">© 2024 Lean Health Consultancy. All rights reserved.</p>
-<div class="flex gap-6">
-<a class="text-gray-400 hover:text-primary transition-colors" href="#">
-<span class="material-symbols-outlined">policy</span>
-</a>
-<a class="text-gray-400 hover:text-primary transition-colors" href="#">
-<span class="material-symbols-outlined">gavel</span>
-</a>
-<a class="text-gray-400 hover:text-primary transition-colors" href="#">
-<span class="material-symbols-outlined">mail</span>
-</a>
-</div>
-</div>
-</footer>
-</body></html>
+                </div>
+            </div>
+
+            <!-- Instructions -->
+            <div class="space-y-4">
+                <p class="text-sm font-semibold text-slate-500 uppercase tracking-[0.2em]">Próximos Passos</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-6 text-sm">
+                    <div class="flex items-center gap-2 text-slate-300">
+                        <span class="material-symbols-rounded text-accent text-sm">mail</span>
+                        Verifique sua caixa de entrada
+                    </div>
+                    <div class="flex items-center gap-2 text-slate-300">
+                        <span class="material-symbols-rounded text-accent text-sm">smartphone</span>
+                        Fique atento ao seu WhatsApp
+                    </div>
+                </div>
+            </div>
+
+            <!-- Back Link -->
+            <div class="mt-12">
+                <a href="index.html" class="text-slate-500 hover:text-white transition-colors text-sm font-bold flex items-center justify-center gap-2">
+                    <span class="material-symbols-rounded text-base">arrow_back</span>
+                    Voltar para o site
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer Info -->
+        <p class="text-center mt-8 text-slate-600 text-xs uppercase tracking-widest">
+            © 2024 GLX Partners • Gestão de Saúde de Alta Performance
+        </p>
+    </div>
+
+    <!-- Modal for WhatsApp Source -->
+    <div id="contactModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
+        <div class="modal-overlay absolute inset-0"></div>
+        <div class="relative bg-white w-full max-w-xl rounded-[2.5rem] shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
+            <div class="p-8 md:p-12">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-black text-slate-900 mb-4">Quase lá!</h2>
+                    <p class="text-slate-600">Para garantir um atendimento prioritário, complete seu perfil abaixo.</p>
+                </div>
+                
+                <form id="modalForm" class="space-y-5">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div class="space-y-2">
+                            <label class="block text-sm font-bold text-slate-700">Nome Completo</label>
+                            <input type="text" name="nome" required class="w-full bg-slate-50 border-slate-200 rounded-xl px-4 py-3 focus:ring-primary focus:border-primary transition-all" placeholder="Seu nome">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-bold text-slate-700">Cargo</label>
+                            <input type="text" name="cargo" required class="w-full bg-slate-50 border-slate-200 rounded-xl px-4 py-3 focus:ring-primary focus:border-primary transition-all" placeholder="Ex: Diretor Hospitalar">
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <label class="block text-sm font-bold text-slate-700">E-mail Corporativo</label>
+                        <input type="email" name="email" required class="w-full bg-slate-50 border-slate-200 rounded-xl px-4 py-3 focus:ring-primary focus:border-primary transition-all" placeholder="voce@empresa.com.br">
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <label class="block text-sm font-bold text-slate-700">Qual o principal desafio hoje?</label>
+                        <select name="desafio" required class="w-full bg-slate-50 border-slate-200 rounded-xl px-4 py-3 focus:ring-primary focus:border-primary transition-all">
+                            <option value="">Selecione uma opção</option>
+                            <option value="Alto tempo de espera">Alto tempo de espera</option>
+                            <option value="Custos operacionais elevados">Custos operacionais elevados</option>
+                            <option value="Baixa produtividade da equipe">Baixa produtividade da equipe</option>
+                            <option value="Falta de indicadores confiáveis">Falta de indicadores confiáveis</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <label class="block text-sm font-bold text-slate-700">Mensagem (opcional)</label>
+                        <textarea name="mensagem" rows="3" class="w-full bg-slate-50 border-slate-200 rounded-xl px-4 py-3 focus:ring-primary focus:border-primary transition-all" placeholder="Conte um pouco sobre sua operação..."></textarea>
+                    </div>
+                    
+                    <button type="submit" id="modalSubmitBtn" class="w-full bg-primary hover:bg-violet-600 text-white font-black py-4 rounded-xl shadow-lg shadow-primary/30 transition-all flex items-center justify-center gap-3">
+                        <span id="modalBtnText">Enviar Solicitação de Análise</span>
+                        <span id="modalBtnIcon" class="material-symbols-rounded">send</span>
+                        <span id="modalBtnSpinner" class="spinner hidden"></span>
+                    </button>
+                    
+                    <p id="modalMessage" class="text-center text-sm font-medium hidden"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check if we should show the modal
+        window.addEventListener('load', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const source = urlParams.get('source');
+            
+            if (source === 'whatsapp') {
+                const modal = document.getElementById('contactModal');
+                const mainContent = document.getElementById('mainContent');
+                
+                modal.classList.remove('hidden');
+                mainContent.classList.add('blur-xl', 'scale-95', 'opacity-50');
+                document.body.classList.add('overflow-hidden');
+            }
+        });
+
+        // Modal form submission
+        document.getElementById('modalForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const submitBtn = document.getElementById('modalSubmitBtn');
+            const btnText = document.getElementById('modalBtnText');
+            const btnSpinner = document.getElementById('modalBtnSpinner');
+            const btnIcon = document.getElementById('modalBtnIcon');
+            const modalMessage = document.getElementById('modalMessage');
+            
+            const formData = new FormData(this);
+            const contactData = {
+                nome: formData.get('nome'),
+                cargo: formData.get('cargo'),
+                email: formData.get('email'),
+                desafio: formData.get('desafio'),
+                mensagem: formData.get('mensagem'),
+                subject: 'Novo Contato via WhatsApp'
+            };
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            btnText.textContent = 'Enviando...';
+            btnSpinner.classList.remove('hidden');
+            btnIcon.classList.add('hidden');
+            modalMessage.classList.add('hidden');
+            
+            // Send email using EmailJS
+            sendContactEmail(contactData)
+                .then(function(response) {
+                    console.log('✅ Email enviado com sucesso!', response.status, response.text);
+                    
+                    // Hide modal and unblur content
+                    const modal = document.getElementById('contactModal');
+                    const mainContent = document.getElementById('mainContent');
+                    
+                    modal.classList.add('hidden');
+                    mainContent.classList.remove('blur-xl', 'scale-95', 'opacity-50');
+                    document.body.classList.remove('overflow-hidden');
+                    
+                    // Cleanup URL parameter without refreshing
+                    const url = new URL(window.location);
+                    url.searchParams.delete('source');
+                    window.history.replaceState({}, '', url);
+                })
+                .catch(function(error) {
+                    console.error('❌ Erro ao enviar email:', error);
+                    if (error.message && error.message.includes('Configuração')) {
+                        modalMessage.textContent = 'Configuração de e-mail pendente (API Keys).';
+                    } else {
+                        modalMessage.textContent = 'Ocorreu um erro ao enviar. Tente novamente.';
+                    }
+                    modalMessage.classList.remove('hidden');
+                    modalMessage.classList.add('text-red-500', 'font-bold');
+                    
+                    submitBtn.disabled = false;
+                    btnText.textContent = 'Enviar Solicitação de Análise';
+                    btnSpinner.classList.add('hidden');
+                    btnIcon.classList.remove('hidden');
+                });
+        });
+    </script>
+
+</body>
+</html>

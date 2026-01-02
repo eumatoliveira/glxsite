@@ -1,1144 +1,1069 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="pt-BR">
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>LeanHealth - Consultoria em Gestão de Saúde</title>
-    <meta
-      content="Transforme sua gestão de saúde em uma máquina de eficiência com metodologia Lean."
-      name="description"
-    />
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
-      rel="stylesheet"
-    />
-    <!-- GSAP for animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<html class="scroll-smooth bg-background-dark" lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+    
+    <!-- SEO Meta Tags -->
+    <title>GLX Partners - Consultoria em Gestão de Saúde de Alta Performance</title>
+    <meta content="Transforme sua clínica ou hospital em uma operação de alta eficiência com metodologia Lean Healthcare." name="description"/>
+    <meta content="lean healthcare, gestão hospitalar, consultoria saúde, redução custos, otimização processos" name="keywords"/>
+    <meta content="GLX Partners" name="author"/>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://glxpartners.com/"/>
+    <meta property="og:title" content="GLX Partners - Lean Healthcare Consultoria"/>
+    <meta property="og:description" content="Transforme sua operação de saúde com metodologia Lean"/>
+    <meta property="og:image" content="img/glx-logo.png"/>
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image"/>
+    <meta property="twitter:title" content="GLX Partners"/>
+    <meta property="twitter:description" content="Consultoria em Lean Healthcare"/>
+    
+    <!-- Security Headers (Meta Fallback) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com;"/>
+    <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+    <meta http-equiv="X-Frame-Options" content="DENY"/>
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"/>
+    
+    <!-- Preconnect to required origins -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://cdn.tailwindcss.com" rel="preconnect"/>
+    <link href="https://cdn.jsdelivr.net" rel="preconnect"/>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" as="style"/>
+    <link rel="preload" href="img/glx-logo.png" as="image"/>
+    
+    <!-- Stylesheets -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet"/>
+    <link href="css/accessibility.css" rel="stylesheet"/>
+    
+    <!-- Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Tailwind Config -->
     <script>
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              primary: "#7c3aed", // Vibrant Purple
-              secondary: "#d946ef", // Magenta/Pink accent
-              "background-light": "#ffffff",
-              "background-dark": "#09090b", // Very dark zinc
-              "surface-dark": "#18181b",
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#7c3aed",
+                        secondary: "#d946ef",
+                        accent: "#0ea5e9",
+                        "background-light": "#ffffff",
+                        "background-dark": "#09090b",
+                        "surface-dark": "#18181b",
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'hero-glow': 'radial-gradient(circle at top center, #4c1d95 0%, #09090b 70%)',
+                        'grid-white': "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath d='M0 40 L40 40 L40 0' fill='none' stroke='rgba(255,255,255,0.03)' stroke-width='1'/%3E%3C/svg%3E\")",
+                    }
+                },
             },
-            fontFamily: {
-              sans: ['"Plus Jakarta Sans"', "sans-serif"],
-              display: ['"Plus Jakarta Sans"', "sans-serif"],
-            },
-            backgroundImage: {
-              "hero-glow":
-                "radial-gradient(circle at top center, #581c87 0%, #09090b 60%)",
-              "card-gradient":
-                "linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%)",
-            },
-          },
-        },
-      };
+        };
     </script>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX', {
+            'send_page_view': true,
+            'anonymize_ip': true
+        });
+        
+        window.trackEvent = function(eventName, params) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', eventName, params);
+            }
+        };
+    </script>
+
     <style>
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #18181b;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #52525b;
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #71717a;
-      }
-      .glass-effect {
-        background: rgba(255, 255, 255, 0.03);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-      }
-      .text-gradient {
-        background: linear-gradient(to right, #ffffff, #e9d5ff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-      .text-gradient-primary {
-        background: linear-gradient(to right, #7c3aed, #d946ef);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-      details > summary {
-        list-style: none;
-      }
-      details > summary::-webkit-details-marker {
-        display: none;
-      }
-      details[open] summary ~ * {
-        animation: sweep 0.3s ease-in-out;
-      }
-      @keyframes sweep {
-        0% {
-          opacity: 0;
-          transform: translateY(-10px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      
-      /* ========================================
-         🎨 MOBILE-FIRST RESPONSIVE IMPROVEMENTS
-         ======================================== */
-      
-      /* Fluid Typography - Mobile First */
-      h1, .text-5xl, .text-6xl {
-        font-size: clamp(2rem, 8vw, 3.75rem) !important;
-        line-height: 1.1 !important;
-      }
-      
-      h2, .text-4xl {
-        font-size: clamp(1.75rem, 6vw, 2.25rem) !important;
-        line-height: 1.2 !important;
-      }
-      
-      h3, .text-3xl {
-        font-size: clamp(1.5rem, 5vw, 1.875rem) !important;
-        line-height: 1.3 !important;
-      }
-      
-      p, .text-lg {
-        font-size: clamp(1rem, 2.5vw, 1.125rem) !important;
-        line-height: 1.6 !important;
-      }
-      
-      /* Touch Targets - Minimum 44x44px */
-      button, a, input[type="button"], input[type="submit"] {
-        min-height: 44px !important;
-        min-width: 44px !important;
-      }
-      
-      /* Smoother Animations - 200ms (was 300ms) */
-      * {
-        transition-duration: 200ms !important;
-      }
-      
-      /* Mobile Menu Improvements */
-      @media (max-width: 768px) {
-        /* Header padding mobile */
-        nav {
-          padding-top: 0.5rem !important;
-          padding-bottom: 0.5rem !important;
-        }
-        
-        /* Hide desktop navigation */
-        nav .hidden.md\:block {
-          display: none !important;
-        }
-        
-        /* Improved tap areas */
-        a, button {
-          padding: 0.75rem 1rem !important;
-        }
-        
-        /* Cards spacing mobile */
-        .grid {
-          gap: 1rem !important;
-        }
-      }
-      
-      /* Reduced Motion Support */
-      @media (prefers-reduced-motion: reduce) {
-        *, *::before, *::after {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-        }
-      }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #09090b; }
+        ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #7c3aed; }
 
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #fff 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        details summary::-webkit-details-marker { display: none; }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float { animation: float 4s ease-in-out infinite; }
+
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 3px solid white;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: white;
+            border: 4px solid currentColor;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-top: -6px;
+            transition: all 0.2s ease;
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        input[type="range"]:focus { outline: none; }
     </style>
-  </head>
-  <body
-    class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 font-sans antialiased overflow-x-hidden transition-colors duration-300"
-  >
-    <nav
-      class="fixed w-full z-50 top-0 left-0 border-b border-slate-200 dark:border-white/10 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md"
-    >
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-20">
-          <div class="flex items-center gap-3">
-            <img 
-              src="img/glx-logo.png" 
-              alt="GLX Logo" 
-              class="w-14 h-14 rounded-full object-cover"
-            />
-            <span class="font-black text-2xl tracking-tight text-slate-900" style="font-family: 'Inter', sans-serif; letter-spacing: -0.5px;">
-              GLX<span class="font-light text-slate-900 ml-1">PARTNERS</span>
-            </span>
-          </div>
-          <div class="hidden md:block">
-            <div class="ml-10 flex items-baseline space-x-8">
-              <a
-                class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium"
-                href="#metodo"
-                >Método</a
-              >
-              <a
-                class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium"
-                href="#resultados"
-                >Resultados</a
-              >
-              <a
-                class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium"
-                href="#cases"
-                >Cases</a
-              >
-              <a
-                class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium"
-                href="#faq"
-                >FAQ</a
-              >
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --mesh-1: #7c3aed;
+            --mesh-2: #3b82f6;
+            --mesh-3: #10b981;
+        }
+        .text-gradient-premium {
+            background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.7) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        @keyframes mesh-pulse {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.2; }
+            50% { transform: translate(5%, 5%) scale(1.1); opacity: 0.3; }
+        }
+        .animate-mesh {
+            animation: mesh-pulse 8s ease-in-out infinite;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px border rgba(255, 255, 255, 0.05);
+        }
+        .spotlight-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .spotlight-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.06), transparent 40%);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 500ms;
+            pointer-events: none;
+        }
+        .spotlight-card:hover::before {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-background-dark text-slate-900 dark:text-slate-100 font-sans antialiased overflow-x-hidden">
+
+    <nav class="fixed w-full z-[100] top-0 left-0 border-b border-white/5 bg-[#09090b]/40 backdrop-blur-2xl transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center gap-3 group cursor-pointer">
+                    <div class="relative">
+                        <img src="img/glx-logo.png" alt="GLX Partners" class="h-10 w-auto relative z-10 transition-transform group-hover:scale-110">
+                        <div class="absolute inset-0 bg-primary/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <span class="font-extrabold text-2xl tracking-tighter text-white">GLX <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-violet-400">Partners</span></span>
+                </div>
+                
+                <div class="hidden md:flex items-center absolute left-1/2 -translate-x-1/2 space-x-10">
+                    <a class="text-sm font-bold text-slate-400 hover:text-white transition-all hover:tracking-widest uppercase" href="#metodo">Método</a>
+                    <a class="text-sm font-bold text-slate-400 hover:text-white transition-all hover:tracking-widest uppercase" href="#resultados">Resultados</a>
+                    <a class="text-sm font-bold text-slate-400 hover:text-white transition-all hover:tracking-widest uppercase" href="#cases">Cases</a>
+                    <a class="text-sm font-bold text-slate-400 hover:text-white transition-all hover:tracking-widest uppercase" href="#faq">FAQ</a>
+                </div>
+
+                <div>
+                    <a class="relative group inline-flex items-center justify-center px-8 py-3 font-bold text-white transition-all duration-200 bg-primary rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-0.5 active:translate-y-0" href="#contato">
+                        <span class="relative z-10">Agendar Análise</span>
+                        <div class="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-violet-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </a>
+                </div>
             </div>
-          </div>
-          <div class="flex items-center gap-3">
-            <a
-              class="bg-primary hover:bg-violet-600 text-white px-6 py-3 rounded-full text-sm font-bold transition-all hover:scale-105 shadow-lg shadow-primary/20"
-              href="#contact"
-              >Agendar Análise</a
-            >
-            
-            <!-- Mobile Menu Button -->
-            <button 
-              id="mobileMenuBtn"
-              class="md:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors"
-              aria-label="Menu"
-            >
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-          </div>
         </div>
-        
-        <!-- Mobile Menu Overlay -->
-        <div 
-          id="mobileMenu" 
-          class="hidden md:hidden absolute top-full left-0 right-0 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-lg"
-        >
-          <div class="px-4 py-6 space-y-3">
-            <a href="#metodo" class="block py-3 px-4 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 font-medium transition-colors">Método</a>
-            <a href="#resultados" class="block py-3 px-4 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 font-medium transition-colors">Resultados</a>
-            <a href="#cases" class="block py-3 px-4 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 font-medium transition-colors">Cases</a>
-            <a href="#faq" class="block py-3 px-4 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 font-medium transition-colors">FAQ</a>
-          </div>
-        </div>
-      </div>
     </nav>
-    <div
-      class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-background-dark"
-    >
-      <div class="absolute inset-0 bg-hero-glow opacity-90 z-0"></div>
-      <div
-        class="absolute top-0 right-0 w-1/2 h-full bg-primary/10 blur-[120px] rounded-full pointer-events-none"
-      ></div>
-      <div
-        class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
-      >
 
-        <h1
-          class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 text-white leading-tight"
-        >
-          Transforme sua
-          <span
-            class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"
-            data-text-type
-            data-text-type-texts="Clínica|Gestão de Saúde|Operação"
-            >Clínica</span
-          ><br />
-          em uma máquina de eficiência
-        </h1>
-        <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-slate-400">
-          Reduza o tempo de espera em 30% e aumente a satisfação do paciente com
-          nossa metodologia Lean Healthcare comprovada. Tecnologia e estratégia
-          para gestores ambiciosos.
-        </p>
-        <div class="mt-10 flex justify-center gap-4">
-          <a
-            class="flex items-center gap-2 bg-primary hover:bg-violet-600 text-white px-8 py-4 rounded-full text-lg font-bold shadow-xl shadow-primary/30 transition-all hover:-translate-y-1"
-            href="#contact"
-          >
-            Agendar análise gratuita
-            <span class="material-icons-round text-lg">arrow_forward</span>
-          </a>
+    <header class="relative min-h-[95vh] flex items-center justify-center overflow-hidden bg-[#09090b] pt-20" id="home">
+        <!-- Mesh Gradient Background -->
+        <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/20 blur-[120px] rounded-full animate-mesh"></div>
+            <div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-secondary/10 blur-[120px] rounded-full animate-mesh" style="animation-delay: 2s;"></div>
+            <div class="absolute top-[20%] right-[10%] w-[30%] h-[30%] bg-violet-600/10 blur-[100px] rounded-full animate-mesh" style="animation-delay: 1s;"></div>
         </div>
 
-      </div>
-    </div>
-    <section
-      class="py-24 bg-background-light dark:bg-background-light relative"
-      id="resultados"
-    >
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-          <span
-            class="text-primary font-semibold tracking-wide uppercase text-sm"
-            >Por que líderes escolhem a LeanHealth</span
-          >
-          <h2
-            class="mt-3 text-3xl font-extrabold text-slate-900 sm:text-4xl"
-          >
-            Crescimento acelerado com resultados mensuráveis
-          </h2>
-          <p class="mt-4 text-lg text-slate-600">
-            Nossa abordagem combina UX estratégico, tecnologia de ponta e Lean
-            Six Sigma para entregar resultados que impactam diretamente a última
-            linha do DRE.
-          </p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div
-            class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover:shadow-xl transition-shadow text-center group"
-          >
-            <div
-              class="w-12 h-12 bg-purple-100 text-primary rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:text-white transition-colors"
-            >
-              <span class="material-icons-round">trending_up</span>
+        <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+            
+            <div data-scroll-animate="fade-up" class="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-10 hover:bg-white/10 transition-all cursor-default group hover:border-primary/50">
+                <span class="w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_10px_rgba(124,58,237,0.8)] animate-pulse"></span>
+                <span class="text-xs font-black text-white/80 tracking-[0.2em] uppercase">Consultoria de Alta Performance</span>
             </div>
-            <h3 class="text-2xl font-bold text-slate-900 mb-2">+87%</h3>
-            <p class="font-semibold text-slate-700 mb-2">
-              Eficiência Operacional
+            
+            <h1 data-scroll-animate="fade-up" data-scroll-delay="100" class="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tight mb-8 leading-[1.1] text-gradient-premium">
+                Transforme sua <span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary">Clínica</span><br>
+                em uma máquina de <span class="text-white">eficiência</span>
+            </h1>
+            
+            <p data-scroll-animate="fade-up" data-scroll-delay="200" class="text-lg md:text-xl text-slate-400 max-w-3xl mb-12 leading-relaxed">
+                Reduza o tempo de espera em 30% e aumente a satisfação do paciente com nossa metodologia Lean Healthcare comprovada. Tecnologia e estratégia para gestores ambiciosos.
             </p>
-            <p class="text-sm text-slate-500">
-              Redesenhamos fluxos de pacientes com foco em reduzir gargalos.
-            </p>
-          </div>
-          <div
-            class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover:shadow-xl transition-shadow text-center group"
-          >
-            <div
-              class="w-12 h-12 bg-purple-100 text-primary rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:text-white transition-colors"
-            >
-              <span class="material-icons-round">timer_off</span>
+            
+            <div data-scroll-animate="fade-up" data-scroll-delay="300" class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center mb-20">
+                <a href="#contato" class="group relative px-8 py-4 bg-primary text-white font-bold rounded-full overflow-hidden shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all hover:-translate-y-1 w-full sm:w-auto">
+                    <span class="relative z-10 flex items-center justify-center gap-2">
+                        Agendar análise gratuita
+                        <span class="material-symbols-rounded group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </span>
+                    <div class="absolute inset-0 bg-gradient-to-r from-primary to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                </a>
             </div>
-            <h3 class="text-2xl font-bold text-slate-900 mb-2">-30%</h3>
-            <p class="font-semibold text-slate-700 mb-2">Tempo de Espera</p>
-            <p class="text-sm text-slate-500">
-              Identificamos pontos de atrito que fazem pacientes desistirem.
-            </p>
-          </div>
-          <div
-            class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover:shadow-xl transition-shadow text-center group"
-          >
-            <div
-              class="w-12 h-12 bg-purple-100 text-primary rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:text-white transition-colors"
-            >
-              <span class="material-icons-round">star</span>
-            </div>
-            <h3 class="text-2xl font-bold text-slate-900 mb-2">+250%</h3>
-            <p class="font-semibold text-slate-700 mb-2">NPS do Paciente</p>
-            <p class="text-sm text-slate-500">
-              Posicionamento que atrai o paciente ideal através da excelência.
-            </p>
-          </div>
-          <div
-            class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover:shadow-xl transition-shadow text-center group"
-          >
-            <div
-              class="w-12 h-12 bg-purple-100 text-primary rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:text-white transition-colors"
-            >
-              <span class="material-icons-round">attach_money</span>
-            </div>
-            <h3 class="text-2xl font-bold text-slate-900 mb-2">2.5x ROI</h3>
-            <p class="font-semibold text-slate-700 mb-2">Retorno Financeiro</p>
-            <p class="text-sm text-slate-500">
-              Metodologia comprovada para crescimento previsível de receita.
-            </p>
-          </div>
         </div>
-      </div>
-    </section>
-    <section class="py-24 bg-white dark:bg-slate-50 overflow-hidden">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <span
-            class="text-primary font-semibold tracking-wide uppercase text-sm border border-primary/20 px-3 py-1 rounded-full bg-primary/5"
-            >Nossos Serviços</span
-          >
-          <h2
-            class="mt-4 text-3xl font-extrabold text-slate-900 sm:text-4xl"
-            data-scroll-float
-          >
-            Veja como nós evoluímos a sua gestão
-          </h2>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce">
+            <span class="material-symbols-rounded text-white/40 text-3xl">keyboard_arrow_down</span>
         </div>
-        <div class="max-w-[900px] mx-auto gap-3 grid grid-cols-12 grid-rows-2 px-4">
-          <!-- Row 1: 3 cards de 4 colunas cada -->
-          <div class="col-span-12 sm:col-span-4 h-[300px] relative overflow-hidden rounded-2xl shadow-lg group cursor-pointer">
-            <div class="absolute z-10 top-4 left-4 flex flex-col items-start">
-              <p class="text-xs text-white/70 uppercase font-bold tracking-wider">Posicionamento</p>
-              <h4 class="text-white font-semibold text-lg mt-1">Diferencie sua Clínica</h4>
+    </header>
+
+    <!-- Stats Section (Novo: CountUp Animation) -->
+    <section class="py-20 relative overflow-hidden bg-[#09090b]">
+        <!-- Glow Effect no Background -->
+        <div class="absolute inset-0 bg-gradient-to-r from-violet-900/20 via-transparent to-blue-900/20"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center divide-y md:divide-y-0 md:divide-x divide-white/10">
+                <!-- Stat 1 -->
+                <div class="p-4">
+                    <div class="text-4xl md:text-5xl font-black text-white mb-2 flex justify-center items-center gap-1">
+                        +<span data-count-up data-to="50" data-duration="2.5">0</span>
+                    </div>
+                    <p class="text-xs md:text-sm font-bold tracking-[0.2em] text-slate-400 uppercase">Unidades Atendidas</p>
+                </div>
+                
+                <!-- Stat 2 -->
+                <div class="p-4 pt-8 md:pt-4">
+                    <div class="text-4xl md:text-5xl font-black text-[#d946ef] mb-2 flex justify-center items-center gap-1">
+                        -<span data-count-up data-to="35" data-duration="2.5">0</span>%
+                    </div>
+                    <p class="text-xs md:text-sm font-bold tracking-[0.2em] text-slate-400 uppercase">Tempo de Espera</p>
+                </div>
+
+                <!-- Stat 3 -->
+                <div class="p-4 pt-8 md:pt-4">
+                    <div class="text-4xl md:text-5xl font-black text-white mb-2 flex justify-center items-center gap-1">
+                        <span>R$</span> 
+                        <span data-count-up data-to="15" data-duration="3" data-separator=".">0</span>M+
+                    </div>
+                    <p class="text-xs md:text-sm font-bold tracking-[0.2em] text-slate-400 uppercase">Custos Otimizados</p>
+                </div>
+
+                <!-- Stat 4 -->
+                <div class="p-4 pt-8 md:pt-4">
+                    <div class="text-4xl md:text-5xl font-black text-[#d946ef] mb-2 flex justify-center items-center gap-1">
+                        <span data-count-up data-to="98" data-duration="2">0</span>%
+                    </div>
+                    <p class="text-xs md:text-sm font-bold tracking-[0.2em] text-slate-400 uppercase">Satisfação NPS</p>
+                </div>
             </div>
-            <img
-              alt="Posicionamento de marca em saúde"
-              class="z-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmT6aJbZ67MJ-SFKtS5iazua_GkBYZd5yRZZ91JqdSoRgm2perGuBZT2w4faUVFiyUIPzRP53eDBumx_tQyzrucg9_KaeT8LqJBFfDiKSdMgJXnSYwfNtBS1HelaBrsKS6H-b6Uj5f-Jird84mOWSowUTmlouwusBIyenml1eiadhkBNBXE8dPPrJHYa_S2jaDdmt1q7alObopjCOO6Jq8aWm0CX2pf7xrKo1Nju1IHiNnVVEP007HEM2uDqJEZX6-vLhZlyOGEoc"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-            <div class="absolute bottom-4 left-4 right-4">
-              <p class="text-white/80 text-sm">Estratégia de marca que destaca sua clínica da concorrência.</p>
+
+            <!-- Split Text Section (Novo) -->
+            <div class="mt-20 max-w-4xl mx-auto text-center border-t border-white/10 pt-16">
+                <h3 data-split-text data-split-type="words" data-delay="40" class="text-xl md:text-2xl font-light text-slate-300 leading-relaxed tracking-wide">
+                    Reduza gargalos operacionais e melhore a experiência do paciente em até <span class="text-white font-semibold">40%</span> com nossa consultoria especializada em <span class="text-white font-semibold">Lean Healthcare</span>.
+                </h3>
             </div>
-          </div>
-          
-          <div class="col-span-12 sm:col-span-4 h-[300px] relative overflow-hidden rounded-2xl shadow-lg group cursor-pointer">
-            <div class="absolute z-10 top-4 left-4 flex flex-col items-start">
-              <p class="text-xs text-white/70 uppercase font-bold tracking-wider">Jornada</p>
-              <h4 class="text-white font-semibold text-lg mt-1">Paciente Ideal</h4>
-            </div>
-            <img
-              alt="Jornada do paciente"
-              class="z-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWURpUgmJgK9qurWfVDfzz4z_3ZPdztEJ19td4_bY1E9Z6OJHTR6cIqOT2PvwKWKzcMe3R8LjAnXucZ6c7CkQZy8ADsLs8qvSQDs2horYpn1ftCVaKsAkqB9niADCB2TZCfNrlYUG_2ikW7gh1QOKfGNPAjyUhPGbAQVMuZVhkr3_ML3oNxZ3gXk0oP4wkBST62gNT3xFCghTJ0GHkiVO2DCEffDD56iwLr8n3apn0SS1PI_QrsCIgg42WBQPNXA1DfVCN-YsrazA"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-            <div class="absolute bottom-4 left-4 right-4">
-              <p class="text-white/80 text-sm">Fluxos que transformam leads em pacientes fiéis.</p>
-            </div>
-          </div>
-          
-          <div class="col-span-12 sm:col-span-4 h-[300px] relative overflow-hidden rounded-2xl shadow-lg group cursor-pointer">
-            <div class="absolute z-10 top-4 left-4 flex flex-col items-start">
-              <p class="text-xs text-white/70 uppercase font-bold tracking-wider">Especialistas</p>
-              <h4 class="text-white font-semibold text-lg mt-1">Time Sênior</h4>
-            </div>
-            <img
-              alt="Time de especialistas"
-              class="z-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCM8sgGF0O-bXFS7PtXCJjZUPInlgE51q-2xDbPyzkM-OZGpgRhifCrDP72v6K0hPjVKxVdo_NdlagopcXx6PSrYWaVPyT1FWbJZu9vY13jwfUIhtPsRDY0h2mJTVvGfbNwXTOPd-XYSjEYC6EcTxDFTlwpJqVZeHLLE6LpF7tlsXXT5Tr3zHXhUlE-oBJ3ADQ5UVrHY6CLo_oACpkTIsdoh_V2N9IgikuqAzTFbhVKov26G7lpIdndGz26hrFc5m2TKj0ZqAsWQE0"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-            <div class="absolute bottom-4 left-4 right-4">
-              <p class="text-white/80 text-sm">Equipe multidisciplinar com experiência em clínicas.</p>
-            </div>
-          </div>
-          
-          <!-- Row 2: Card maior (5 cols) + Card maior (7 cols) -->
-          <div class="col-span-12 sm:col-span-5 h-[300px] relative overflow-hidden rounded-2xl shadow-lg group cursor-pointer">
-            <div class="absolute z-10 top-4 left-4 flex flex-col items-start">
-              <p class="text-xs text-white/70 uppercase font-bold tracking-wider">Software</p>
-              <h4 class="text-slate-900 font-semibold text-xl mt-1">Gestão Inteligente</h4>
-            </div>
-            <img
-              alt="Interface funcional"
-              class="z-0 w-full h-full object-cover scale-110 transform group-hover:scale-125 transition-transform duration-700"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbAOMG_AMjYlXyTc_7OJy8eXvF3Kzi-ZfdTj1u0JtmTBb2qLO2S5jp_h1zs9bSeGZLYnCIhHqCxNKOCHAM0jnjO4WmrI62mLskL8OW0xld4z43uRGD1dpFiSdnAy2le0cmnrmKPhtTuhWNqzMQbV4jFz2dSWcvRboxQuUzThX-vjxj5f6LoEp6JskyMg7t7-cTirb4-kon20Hk90mlINOumfQftLhJWX6stxeYeSDzhrv5fOO9evi6hC4OgeU-X3PyBxU_7Fu3R-M"
-            />
-            <div class="absolute bottom-0 left-0 right-0 bg-white/40 backdrop-blur-sm border-t border-white/30 p-4 flex justify-between items-center">
-              <div>
-                <p class="text-slate-900 text-sm font-medium">Telas clean e funcionais</p>
-                <p class="text-slate-700 text-xs">Fluidez para seu staff.</p>
-              </div>
-              <a href="#contact" class="bg-primary text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-violet-600 transition-colors">
-                Saiba Mais
-              </a>
-            </div>
-          </div>
-          
-          <div class="col-span-12 sm:col-span-7 h-[300px] relative overflow-hidden rounded-2xl shadow-lg group cursor-pointer">
-            <div class="absolute z-10 top-4 left-4 flex flex-col items-start">
-              <p class="text-xs text-white/70 uppercase font-bold tracking-wider">Receita</p>
-              <h4 class="text-white font-semibold text-xl mt-1">Crescimento Previsível</h4>
-            </div>
-            <img
-              alt="Receita Previsível"
-              class="z-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXDPcoaYo03AIzA0eP57ubdw31wHzQVoOkvO3KuAQt2wvj1IixGQlD6sBRTpKh7Yarb7l1LhXXLobAAYvU-Vu0ZcWf4KDlcBN8JDEBGuHmxwT9zHeOA-QKS2q27eyjFk45oz4kWl4X-wYft81j40EkuHhDUi3SiWn1XBAqk3KnFgr7GmHjM-kyQSuw9Tlu3SUXSUM21KnGi8XGTR1Srn-1lRuP3tWSjIBmGfJkqBXLxXAY0NRaTmq23WK1TAa5QHZqtcBslMzrCKs"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-            <div class="absolute bottom-0 left-0 right-0 bg-black/50 backdrop-blur-sm border-t border-white/10 p-4 flex items-center gap-4">
-              <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
-                <span class="material-icons-round text-primary">trending_up</span>
-              </div>
-              <div class="flex-1">
-                <p class="text-white text-sm font-medium">Arquitetura de Receita</p>
-                <p class="text-white/60 text-xs">Aumentar conversão, retenção e ticket médio.</p>
-              </div>
-              <a href="#contact" class="bg-white text-slate-900 text-xs font-bold px-4 py-2 rounded-full hover:bg-slate-100 transition-colors">
-                Começar
-              </a>
-            </div>
-          </div>
         </div>
-        <div class="mt-16 text-center">
-          <a
-            class="inline-flex items-center gap-2 bg-primary hover:bg-violet-600 text-white px-6 py-3 rounded-full font-bold shadow-lg shadow-primary/30 transition-all"
-            href="#contact"
-          >
-            Agendar análise gratuita
-            <span class="material-icons-round text-sm">arrow_forward</span>
-          </a>
-        </div>
-      </div>
-    </section>
-    <section
-      class="py-12 px-4 sm:px-6 lg:px-8 bg-background-light dark:bg-background-dark"
-    >
-      <div
-        class="relative max-w-5xl mx-auto rounded-3xl bg-surface-dark dark:bg-slate-900 overflow-hidden shadow-2xl border border-white/10"
-      >
-        <div
-          class="absolute -top-24 -left-24 w-64 h-64 bg-primary/20 blur-[100px] rounded-full"
-        ></div>
-        <div
-          class="absolute -bottom-24 -right-24 w-64 h-64 bg-secondary/20 blur-[100px] rounded-full"
-        ></div>
-        <div class="relative z-10 px-6 py-16 sm:px-12 sm:py-20 text-center">
-          <h2
-            class="text-3xl font-bold tracking-tight text-white sm:text-4xl mb-6"
-          >
-            Acelere os seus resultados com a LeanHealth
-          </h2>
-          <div class="flex flex-wrap justify-center gap-6 mb-10 text-slate-300">
-            <div class="flex items-center gap-2">
-              <span class="material-icons-round text-primary"
-                >check_circle</span
-              >
-              <span>+87% conversão</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="material-icons-round text-primary"
-                >trending_down</span
-              >
-              <span>-30% espera</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="material-icons-round text-primary">trending_up</span>
-              <span>2.5x Receita</span>
-            </div>
-          </div>
-          <a
-            class="bg-white text-primary hover:bg-slate-100 px-8 py-3 rounded-full font-bold shadow-lg transition-colors inline-flex items-center gap-2"
-            href="#contact"
-          >
-            Agendar análise gratuita
-            <span class="material-icons-round text-lg">arrow_circle_right</span>
-          </a>
-        </div>
-      </div>
     </section>
 
-    <!-- ROI Calculator Section -->
-    <section class="py-24 bg-white" id="calculadora">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <span class="text-primary font-semibold tracking-wide uppercase text-sm border border-primary/20 px-3 py-1 rounded-full bg-primary/5">
-            Calculadora de Impacto
-          </span>
-          <h2 class="mt-4 text-3xl font-extrabold text-slate-900 sm:text-4xl">
-            Calcule o Potencial Oculto da sua Clínica
-          </h2>
-          <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
-            Ajuste os controles abaixo com base na realidade atual da sua clínica. Veja instantaneamente o impacto financeiro da metodologia GLX.
-          </p>
+    <section class="py-24 bg-slate-50" id="servicos">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div class="max-w-2xl">
+                    <span class="text-primary font-bold tracking-widest uppercase text-sm">Nossas Frentes</span>
+                    <h2 class="mt-4 text-4xl md:text-5xl font-black text-slate-900 leading-tight">Como eliminamos o desperdício na sua operação</h2>
+                </div>
+                <p class="text-slate-600 md:w-1/3">Combinamos Lean Six Sigma, Tecnologia de Dados e Design de Serviços para criar fluxos de trabalho impecáveis.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" data-magic-bento>
+                <!-- Service 1 (Magic Bento Card) -->
+                <div data-scroll-animate="fade-up" data-scroll-stagger="0" class="bento-card group relative bg-white p-10 rounded-3xl border border-slate-200 shadow-sm overflow-hidden transition-all duration-300">
+                    <!-- Bento Hover Effects -->
+                    <div class="bento-glow absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                    <div class="absolute inset-0 border-2 border-transparent group-hover:border-primary/20 rounded-3xl transition-colors duration-300 pointer-events-none"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-violet-100 text-primary rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                            <span class="material-symbols-rounded text-3xl">map</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-4">Value Stream Mapping</h3>
+                        <p class="text-slate-600 leading-relaxed mb-6">Mapeamos toda a jornada do paciente para identificar gargalos invisíveis que drenam seus recursos e paciência.</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center gap-2 text-sm font-medium text-slate-500"><span class="material-symbols-rounded text-primary text-sm">check_circle</span> Identificação de esperas</li>
+                            <li class="flex items-center gap-2 text-sm font-medium text-slate-500"><span class="material-symbols-rounded text-primary text-sm">check_circle</span> Otimização de pessoal</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Service 2 (Magic Bento Card) -->
+                <div data-scroll-animate="fade-up" data-scroll-stagger="100" class="bento-card group relative bg-white p-10 rounded-3xl border border-slate-200 shadow-sm overflow-hidden transition-all duration-300">
+                    <div class="bento-glow absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                    <div class="absolute inset-0 border-2 border-transparent group-hover:border-secondary/20 rounded-3xl transition-colors duration-300 pointer-events-none"></div>
+
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-fuchsia-100 text-secondary rounded-2xl flex items-center justify-center mb-8 group-hover:bg-secondary group-hover:text-white transition-colors duration-300">
+                            <span class="material-symbols-rounded text-3xl">analytics</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-4">Gestão Baseada em Dados</h3>
+                        <p class="text-slate-600 leading-relaxed mb-6">Implementamos dashboards em tempo real para que cada decisão clínica e administrativa seja baseada em fatos, não intuições.</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center gap-2 text-sm font-medium text-slate-500"><span class="material-symbols-rounded text-secondary text-sm">check_circle</span> Dashboards BI</li>
+                            <li class="flex items-center gap-2 text-sm font-medium text-slate-500"><span class="material-symbols-rounded text-secondary text-sm">check_circle</span> Controle de Custos</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Service 3 (Magic Bento Card) -->
+                <div data-scroll-animate="fade-up" data-scroll-stagger="200" class="bento-card group relative bg-white p-10 rounded-3xl border border-slate-200 shadow-sm overflow-hidden transition-all duration-300">
+                    <div class="bento-glow absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                    <div class="absolute inset-0 border-2 border-transparent group-hover:border-pink-500/20 rounded-3xl transition-colors duration-300 pointer-events-none"></div>
+
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-pink-100 text-pink-600 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-pink-600 group-hover:text-white transition-colors duration-300">
+                            <span class="material-symbols-rounded text-3xl">diversity_3</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-4">Cultura de Excelência</h3>
+                        <p class="text-slate-600 leading-relaxed mb-6">Treinamos sua equipe na filosofia Kaizen de melhoria contínua, engajando desde a recepção até o corpo clínico.</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center gap-2 text-sm font-medium text-slate-500"><span class="material-symbols-rounded text-pink-600 text-sm">check_circle</span> Treinamentos In-company</li>
+                            <li class="flex items-center gap-2 text-sm font-medium text-slate-500"><span class="material-symbols-rounded text-pink-600 text-sm">check_circle</span> Certificação Lean</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24" id="cases">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-primary font-bold tracking-widest uppercase text-sm">Impacto Real</span>
+                <h2 class="mt-4 text-4xl md:text-5xl font-black text-slate-900 leading-tight">Estudos de Caso</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Main Case Card -->
+                <div class="md:col-span-2 md:row-span-2 spotlight-card bg-background-dark rounded-[3rem] p-10 lg:p-16 text-white relative overflow-hidden group">
+                    <div class="absolute inset-0 z-0 opacity-40 group-hover:opacity-50 transition-opacity">
+                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1200&auto=format&fit=crop" alt="Hospital" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/80 to-transparent"></div>
+                    </div>
+                    
+                    <div class="relative z-10 flex flex-col h-full justify-between">
+                        <div>
+                            <span class="inline-block px-4 py-1 rounded-full bg-primary text-white text-[10px] font-black uppercase tracking-[0.2em] mb-8">Destaque</span>
+                            <h3 class="text-3xl lg:text-5xl font-black mb-6 leading-tight">Hospital Santa Clara: <br><span class="text-primary">42%</span> menos espera.</h3>
+                            <p class="text-slate-400 text-lg max-w-xl leading-relaxed">Implementação completa de Pull Flow e LSS 4.0 reduzindo gargalos cirúrgicos e tempo de triagem.</p>
+                        </div>
+                        
+                        <div class="mt-12">
+                            <div class="bg-white/5 backdrop-blur-xl p-6 rounded-2xl border border-white/10 max-w-lg">
+                                <p class="text-white font-medium italic mb-4">"A GLX Partners mudou nossa cultura. Não foi apenas um relatório, foi uma transformação no chão de fábrica."</p>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-sm">DS</div>
+                                    <div>
+                                        <div class="text-white font-bold text-sm">Dr. Arnaldo Silva</div>
+                                        <div class="text-slate-500 text-xs tracking-widest uppercase">Diretor Geral</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="spotlight-overlay absolute inset-0 opacity-0 transition-opacity pointer-events-none"></div>
+                </div>
+
+                <!-- Small Stats Card 1 -->
+                <div class="spotlight-card bg-slate-50 border border-slate-100 rounded-[2.5rem] p-8 flex flex-col justify-center gap-4 group hover:border-primary/30 transition-all">
+                    <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-rounded text-3xl">trending_down</span>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-black text-slate-900">-18%</div>
+                        <div class="text-sm font-bold text-slate-500 tracking-widest uppercase">Custos de Suprimentos</div>
+                    </div>
+                    <div class="spotlight-overlay absolute inset-0 opacity-0 transition-opacity pointer-events-none"></div>
+                </div>
+
+                <!-- Small Stats Card 2 -->
+                <div class="spotlight-card bg-slate-50 border border-slate-100 rounded-[2.5rem] p-8 flex flex-col justify-center gap-4 group hover:border-secondary/30 transition-all">
+                    <div class="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-rounded text-3xl">sentiment_very_satisfied</span>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-black text-slate-900">+60 NPS</div>
+                        <div class="text-sm font-bold text-slate-500 tracking-widest uppercase">Satisfação Paciente</div>
+                    </div>
+                    <div class="spotlight-overlay absolute inset-0 opacity-0 transition-opacity pointer-events-none"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Masonry Gallery Section (Novo) -->
+    <section class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
+            <span class="text-primary font-bold tracking-widest uppercase text-sm">Visual</span>
+            <h2 class="mt-4 text-4xl md:text-5xl font-black text-slate-900 leading-tight">Lean Healthcare na Prática</h2>
         </div>
         
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          <!-- Sliders Panel -->
-          <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200">
-            <!-- Faturamento Mensal -->
-            <div class="mb-8">
-              <div class="flex justify-between items-center mb-3">
-                <label class="text-sm font-bold text-slate-700 uppercase tracking-wider">Faturamento Mensal</label>
-                <span id="faturamentoValue" class="text-xl font-bold text-primary">R$ 150.000</span>
-              </div>
-              <input 
-                type="range" 
-                id="faturamentoSlider" 
-                min="50000" 
-                max="500000" 
-                value="150000" 
-                step="10000"
-                class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-primary"
-              />
-              <p class="text-xs text-slate-500 mt-2 flex items-center gap-1">
-                <span class="material-icons-round text-primary text-sm">info</span>
-                Considere a média bruta dos últimos 3 meses (Consultas + Procedimentos + Exames).
-              </p>
-            </div>
-            
-            <!-- Desperdício Operacional -->
-            <div class="mb-8">
-              <div class="flex justify-between items-center mb-3">
-                <label class="text-sm font-bold text-slate-700 uppercase tracking-wider">Desperdício Operacional</label>
-                <span id="desperdicioValue" class="text-xl font-bold text-amber-600">15%</span>
-              </div>
-              <input 
-                type="range" 
-                id="desperdicioSlider" 
-                min="5" 
-                max="40" 
-                value="15" 
-                step="1"
-                class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-amber-500"
-              />
-              <p class="text-xs text-slate-500 mt-2 flex items-center gap-1">
-                <span class="material-icons-round text-amber-500 text-sm">warning</span>
-                Soma aproximada de: Taxa de No-Show + Glosas de Convênio + Horários vagos na agenda + Retrabalho administrativo.
-              </p>
-            </div>
-            
-            <!-- Margem Líquida Atual -->
-            <div class="mb-4">
-              <div class="flex justify-between items-center mb-3">
-                <label class="text-sm font-bold text-slate-700 uppercase tracking-wider">Margem Líquida Atual</label>
-                <span id="margemValue" class="text-xl font-bold text-blue-600">10%</span>
-              </div>
-              <input 
-                type="range" 
-                id="margemSlider" 
-                min="2" 
-                max="30" 
-                value="10" 
-                step="1"
-                class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-500"
-              />
-              <p class="text-xs text-slate-500 mt-2">
-                Quanto sobra no caixa após pagar todos os custos fixos, variáveis e impostos.
-              </p>
-            </div>
-          </div>
-          
-          <!-- Results Panel -->
-          <div class="space-y-6">
-            <!-- Result Cards -->
-            <div class="grid grid-cols-2 gap-4">
-              <div class="bg-gradient-to-br from-primary to-violet-700 rounded-2xl p-6 text-white">
-                <p class="text-xs uppercase tracking-wider opacity-80 mb-1">Dinheiro "Na Mesa" (Anual)</p>
-                <p id="dinheiroNaMesa" class="text-3xl font-bold">R$ 162.000</p>
-                <p class="text-xs opacity-70 mt-2">Valor recuperável com GLX 4.0</p>
-              </div>
-              <div class="bg-white border-2 border-green-200 rounded-2xl p-6">
-                <p class="text-xs uppercase tracking-wider text-slate-500 mb-1">Nova Margem Projetada</p>
-                <p id="novaMargemValue" class="text-3xl font-bold text-green-600">19.0%</p>
-                <p class="text-xs text-green-600 mt-2 flex items-center gap-1">
-                  <span class="material-icons-round text-sm">trending_up</span>
-                  Crescimento Otimizado
-                </p>
-              </div>
-            </div>
-            
-            <!-- Chart Area -->
-            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
-              <div class="flex justify-between items-center mb-4">
-                <h4 class="font-bold text-slate-900">Projeção de Lucro Acumulado (12 Meses)</h4>
-                <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-semibold">Cenário Otimizado</span>
-              </div>
-              <div id="chartContainer" class="h-48 relative">
-                <!-- Simple SVG Chart -->
-                <svg viewBox="0 0 400 150" class="w-full h-full">
-                  <!-- Grid lines -->
-                  <line x1="40" y1="20" x2="40" y2="130" stroke="#e2e8f0" stroke-width="1"/>
-                  <line x1="40" y1="130" x2="380" y2="130" stroke="#e2e8f0" stroke-width="1"/>
-                  <line x1="40" y1="75" x2="380" y2="75" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4"/>
-                  <line x1="40" y1="47" x2="380" y2="47" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4"/>
-                  
-                  <!-- Y-axis labels -->
-                  <text x="35" y="25" font-size="8" fill="#94a3b8" text-anchor="end">R$350k</text>
-                  <text x="35" y="50" font-size="8" fill="#94a3b8" text-anchor="end">R$250k</text>
-                  <text x="35" y="78" font-size="8" fill="#94a3b8" text-anchor="end">R$150k</text>
-                  <text x="35" y="133" font-size="8" fill="#94a3b8" text-anchor="end">R$50k</text>
-                  
-                  <!-- X-axis labels -->
-                  <text x="55" y="143" font-size="7" fill="#94a3b8">Mês 1</text>
-                  <text x="140" y="143" font-size="7" fill="#94a3b8">Mês 4</text>
-                  <text x="230" y="143" font-size="7" fill="#94a3b8">Mês 8</text>
-                  <text x="360" y="143" font-size="7" fill="#94a3b8">Mês 12</text>
-                  
-                  <!-- Current operation line (gray) -->
-                  <polyline 
-                    id="currentLine"
-                    points="50,120 100,110 150,102 200,95 250,88 300,82 350,77 370,74" 
-                    fill="none" 
-                    stroke="#94a3b8" 
-                    stroke-width="2"
-                    stroke-dasharray="4"
-                  />
-                  
-                  <!-- Optimized line (green gradient) -->
-                  <defs>
-                    <linearGradient id="greenGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" style="stop-color:#10b981;stop-opacity:0.3"/>
-                      <stop offset="100%" style="stop-color:#10b981;stop-opacity:0"/>
-                    </linearGradient>
-                  </defs>
-                  <path 
-                    id="optimizedArea"
-                    d="M50,120 Q100,100 150,85 T250,55 T350,35 L370,28 L370,130 L50,130 Z" 
-                    fill="url(#greenGradient)"
-                  />
-                  <polyline 
-                    id="optimizedLine"
-                    points="50,120 100,100 150,85 200,68 250,55 300,42 350,35 370,28" 
-                    fill="none" 
-                    stroke="#10b981" 
-                    stroke-width="3"
-                    stroke-linecap="round"
-                  />
-                  
-                  <!-- Legend -->
-                  <circle cx="280" y="12" r="4" fill="#94a3b8"/>
-                  <text x="290" y="15" font-size="8" fill="#64748b">Operação Atual</text>
-                  <circle cx="280" y="24" r="4" fill="#10b981"/>
-                  <text x="290" y="27" font-size="8" fill="#10b981">Operação GLX 4.0</text>
-                </svg>
-              </div>
-            </div>
-            
-            <!-- CTA -->
-            <a 
-              href="#contact" 
-              class="block w-full text-center bg-primary hover:bg-violet-600 text-white px-8 py-4 rounded-full font-bold shadow-lg shadow-primary/30 transition-all hover:-translate-y-1"
-            >
-              Quero essa projeção personalizada para minha clínica
-              <span class="material-icons-round text-sm align-middle ml-1">arrow_forward</span>
-            </a>
-          </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Bento Grid Container -->
+            <div id="masonry-grid"></div>
         </div>
-      </div>
+    </section>   
+
+
+
+    <!-- Free Resources Section (Novo: Folder Component) -->
+    <section class="py-24 bg-slate-50 overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col items-center text-center gap-16">
+                <!-- Text Content -->
+                <div class="max-w-2xl">
+                    <span class="text-primary font-bold tracking-widest uppercase text-sm">Materiais Gratuitos</span>
+                    <h2 class="mt-4 text-4xl font-black text-slate-900 leading-tight mb-6">Comece sua jornada Lean agora mesmo.</h2>
+                    <p class="text-slate-600 text-lg leading-relaxed mb-8">
+                        Preparemos um kit exclusivo com guias, checklists e estudos de caso para você aplicar os primeiros conceitos de Lean Healthcare na sua unidade.
+                    </p>
+                    <div class="flex justify-center items-center gap-10 text-xs font-black text-slate-400 uppercase tracking-[0.2em] pt-4">
+                        <span class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span> Acesso Imediato</span>
+                        <span class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span> 100% Gratuito</span>
+                    </div>
+                </div>
+
+                <!-- Interactive Folder (Lowered and enhanced) -->
+                <div class="flex justify-center items-center pt-48 pb-24 relative w-full">
+                     <div id="folder-container" class="relative z-30 scale-110 md:scale-125"></div>
+                     
+                     <!-- Premium Glow Background -->
+                     <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-gradient-to-r from-primary/10 via-secondary/5 to-primary/10 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section
-      class="py-24 bg-background-light dark:bg-background-light"
-      id="contact"
-    >
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          <div>
-            <span
-              class="text-primary font-semibold tracking-wide uppercase text-sm border border-primary/20 px-3 py-1 rounded-full bg-primary/5"
-              >Análise Gratuita</span
-            >
-            <h2 class="mt-6 text-4xl font-extrabold text-slate-900">
-              Acelere sua gestão de saúde em 30 dias
-            </h2>
-            <p class="mt-4 text-lg text-slate-600">
-              Receba uma <strong>análise gratuita e personalizada</strong> do
-              seu processo, com insights acionáveis para reduzir tempo de espera
-              e aumentar satisfação.
-            </p>
-            <ul class="mt-8 space-y-4">
-              <li class="flex items-center gap-3 text-slate-700">
-                <span
-                  class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center text-xs"
-                  ><span class="material-icons-round text-sm">check</span></span
-                >
-                Auditoria UX completa do seu processo atual
-              </li>
-              <li class="flex items-center gap-3 text-slate-700">
-                <span
-                  class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center text-xs"
-                  ><span class="material-icons-round text-sm">check</span></span
-                >
-                Roadmap personalizado com ações rápidas
-              </li>
-              <li class="flex items-center gap-3 text-slate-700">
-                <span
-                  class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center text-xs"
-                  ><span class="material-icons-round text-sm">check</span></span
-                >
-                Benchmark com concorrentes do seu segmento
-              </li>
-              <li class="flex items-center gap-3 text-slate-700">
-                <span
-                  class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center text-xs"
-                  ><span class="material-icons-round text-sm">check</span></span
-                >
-                Proposta comercial em até 48h
-              </li>
-            </ul>
-            <div
-              class="mt-10 bg-slate-50 border border-slate-100 p-6 rounded-xl"
-            >
-              <div
-                class="flex items-center gap-2 mb-2 font-bold text-slate-900"
-              >
-                <span class="material-icons-round text-primary">verified</span>
-                Inteligência Bot
-              </div>
-              <p class="text-sm text-slate-600 mb-4 italic">
-                "Nosso produto funcionava bem, mas a experiência gerava churn
-                alto. A LeanHealth aplicou sua metodologia e com as melhorias,
-                reduzimos o churn em 30%."
-              </p>
-              <div class="flex items-center gap-3">
-                <img
-                  alt="Diego Penteado"
-                  class="w-8 h-8 rounded-full"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1zpISpcUjR3Aob5TmLPhKU7em9N4RIimDwmU7WumHIQBA-4nglsfEY2eGlSco7-fBqiuzWfrrJt3OFqiitF6jJpeYpgSbJM3VW_QQ9ltgNzszARVHoskVejLE_He21_NIUcivbFp6CD28qaVeUmsSHaufjXuohG7YOC-N5KOrtQ1T1oUejOFVYKTVE0cZaXILtBgo6pyzbDv3SpEPivi15buw8FLdt4tQN2m6Dwb5a0cpkxa2bD09qP48BbOaSa36bKWKFtXTWsI"
-                />
-                <div>
-                  <p class="text-xs font-bold text-slate-900">Diego Penteado</p>
-                  <p class="text-[10px] text-slate-500">Fundador</p>
+    <!-- Testimonials Section -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 rounded-3xl border border-slate-100 bg-slate-50 relative">
+                    <span class="material-symbols-rounded text-5xl text-primary/10 absolute top-6 right-8">format_quote</span>
+                    <p class="text-slate-600 mb-8 relative z-10">"A redução no churn de convênios foi imediata após a reorganização dos fluxos administrativos que a GLX Partners propôs."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden">
+                             <img src="https://i.pravatar.cc/150?u=1" alt="Avatar">
+                        </div>
+                        <div>
+                            <p class="font-bold text-slate-900">Ricardo Mendes</p>
+                            <p class="text-sm text-slate-500">CEO, MedCorp</p>
+                        </div>
+                    </div>
                 </div>
-              </div>
+                <div class="p-8 rounded-3xl border border-slate-100 bg-slate-50 relative">
+                    <span class="material-symbols-rounded text-5xl text-primary/10 absolute top-6 right-8">format_quote</span>
+                    <p class="text-slate-600 mb-8 relative z-10">"Trabalhar com dados reais mudou nossa percepção de lucratividade por procedimento. Consultoria indispensável."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden">
+                             <img src="https://i.pravatar.cc/150?u=2" alt="Avatar">
+                        </div>
+                        <div>
+                            <p class="font-bold text-slate-900">Dra. Letícia Boas</p>
+                            <p class="text-sm text-slate-500">Diretora Clínica, VitaCenter</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-8 rounded-3xl border border-slate-100 bg-slate-50 relative">
+                    <span class="material-symbols-rounded text-5xl text-primary/10 absolute top-6 right-8">format_quote</span>
+                    <p class="text-slate-600 mb-8 relative z-10">"Os ganhos de eficiência liberaram nossa equipe para focar no que importa: o cuidado humanizado com o paciente."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden">
+                             <img src="https://i.pravatar.cc/150?u=3" alt="Avatar">
+                        </div>
+                        <div>
+                            <p class="font-bold text-slate-900">Carlos Alberto</p>
+                            <p class="text-sm text-slate-500">Gestor, LabExames</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="grid grid-cols-2 gap-4 mt-8">
-              <div
-                class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm text-center"
-              >
-                <span class="material-icons-round text-primary mb-2"
-                  >trending_down</span
-                >
-                <p class="text-xl font-bold text-slate-900">-30% churn</p>
-                <p class="text-xs text-slate-500 mt-1">
-                  Identificamos pontos de fricção
-                </p>
-              </div>
-              <div
-                class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm text-center"
-              >
-                <span class="material-icons-round text-primary mb-2"
-                  >star_rate</span
-                >
-                <p class="text-xl font-bold text-slate-900">+250% leads</p>
-                <p class="text-xs text-slate-500 mt-1">
-                  Qualificados via inbound
-                </p>
-              </div>
-            </div>
-          </div>
-          <div
-            class="bg-primary rounded-2xl p-8 shadow-2xl relative overflow-hidden"
-          >
-            <div
-              class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"
-            ></div>
-            <h3 class="text-2xl font-bold text-white mb-6 relative z-10">
-              Solicitar análise
-            </h3>
-            <form action="#" class="space-y-4 relative z-10">
-              <div>
-                <label class="block text-xs font-medium text-white/80 mb-1"
-                  >Nome completo*</label
-                >
-                <input
-                  class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/40 focus:ring-2 focus:ring-white/50 focus:border-transparent outline-none transition-all"
-                  placeholder="Informe seu nome completo"
-                  type="text"
-                />
-              </div>
-              <div>
-                <label class="block text-xs font-medium text-white/80 mb-1"
-                  >WhatsApp*</label
-                >
-                <input
-                  class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/40 focus:ring-2 focus:ring-white/50 focus:border-transparent outline-none transition-all"
-                  placeholder="(00) 0 0000-0000"
-                  type="tel"
-                />
-              </div>
-              <div>
-                <label class="block text-xs font-medium text-white/80 mb-1"
-                  >Email corporativo*</label
-                >
-                <input
-                  class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/40 focus:ring-2 focus:ring-white/50 focus:border-transparent outline-none transition-all"
-                  placeholder="Informe seu e-mail"
-                  type="email"
-                />
-              </div>
-              <div>
-                <label class="block text-xs font-medium text-white/80 mb-1"
-                  >Empresa*</label
-                >
-                <input
-                  class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/40 focus:ring-2 focus:ring-white/50 focus:border-transparent outline-none transition-all"
-                  placeholder="Nome da sua empresa"
-                  type="text"
-                />
-              </div>
-              <div class="grid grid-cols-2 gap-4">
-                <div>
-                  <label class="block text-xs font-medium text-white/80 mb-1"
-                    >Qual seu cargo?*</label
-                  >
-                  <select
-                    class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-white/50 focus:border-transparent outline-none appearance-none"
-                  >
-                    <option class="text-slate-900">Selecione</option>
-                    <option class="text-slate-900">CEO / Fundador</option>
-                    <option class="text-slate-900">Diretor</option>
-                    <option class="text-slate-900">Gerente</option>
-                  </select>
-                </div>
-                <div>
-                  <label class="block text-xs font-medium text-white/80 mb-1"
-                    >Receita Mensal (MRR)*</label
-                  >
-                  <select
-                    class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-white/50 focus:border-transparent outline-none appearance-none"
-                  >
-                    <option class="text-slate-900">Selecione</option>
-                    <option class="text-slate-900">&lt; R$ 50k</option>
-                    <option class="text-slate-900">R$ 50k - R$ 200k</option>
-                    <option class="text-slate-900">&gt; R$ 200k</option>
-                  </select>
-                </div>
-              </div>
-              <div>
-                <label class="block text-xs font-medium text-white/80 mb-1"
-                  >Qual é seu maior desafio hoje?*</label
-                >
-                <input
-                  class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/40 focus:ring-2 focus:ring-white/50 focus:border-transparent outline-none transition-all"
-                  placeholder="Ex: Alto churn, baixa conversão no trial..."
-                  type="text"
-                />
-              </div>
-              <div>
-                <label class="block text-xs font-medium text-white/80 mb-1"
-                  >Quando quer começar?</label
-                >
-                <select
-                  class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-white/50 focus:border-transparent outline-none appearance-none"
-                >
-                  <option class="text-slate-900">Selecione o prazo</option>
-                  <option class="text-slate-900">Imediato</option>
-                  <option class="text-slate-900">Em 30 dias</option>
-                  <option class="text-slate-900">Apenas pesquisando</option>
-                </select>
-              </div>
-              <button
-                class="w-full bg-white text-primary font-bold py-4 rounded-lg shadow-lg hover:bg-slate-100 transition-colors mt-4 flex items-center justify-center gap-2"
-                type="button"
-              >
-                Agendar análise gratuita
-                <span class="material-icons-round text-sm">arrow_forward</span>
-              </button>
-              <p class="text-[10px] text-white/60 text-center mt-4">
-                Seus dados estão 100% seguros. Não compartilhamos com terceiros.
-                Política de privacidade disponível mediante solicitação.
-              </p>
-            </form>
-          </div>
         </div>
-      </div>
     </section>
-    <section
-      class="py-20 bg-background-dark text-white border-t border-white/5"
-      id="faq"
-    >
-      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <span
-            class="text-xs font-bold text-slate-400 uppercase border border-slate-700 px-2 py-1 rounded"
-            >FAQ</span
-          >
-          <h2 class="mt-4 text-3xl font-bold">Perguntas frequentes</h2>
+
+    <section class="py-24 bg-slate-50 relative overflow-hidden" id="calculadora">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="mb-16">
+                <h2 class="text-4xl font-black text-slate-900 mb-4">Calculadora de Potencial Oculto</h2>
+                <p class="text-slate-600 max-w-2xl">Ajuste os controles abaixo com base na realidade atual da sua clínica. Veja instantaneamente o impacto financeiro da metodologia.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <div class="lg:col-span-5 bg-white p-8 md:p-10 rounded-[2.5rem] shadow-xl border border-slate-100 relative">
+                    <div class="absolute top-0 left-0 w-2 h-full bg-primary rounded-l-[2.5rem]"></div>
+                    <div class="space-y-10">
+                        <div>
+                            <div class="flex justify-between items-end mb-4">
+                                <label class="text-sm font-black text-slate-500 uppercase tracking-widest">Faturamento Mensal</label>
+                                <div class="flex items-center gap-1 border-b-2 border-primary/20 focus-within:border-primary transition-colors">
+                                    <span class="text-xl font-black text-primary/50">R$</span>
+                                    <input type="text" id="input-faturamento" value="150.000" class="w-full text-3xl font-black text-primary bg-transparent border-none p-0 focus:ring-0 text-right">
+                                </div>
+                            </div>
+                            <input type="range" id="calc-faturamento" min="0" max="1000000000" step="50000" value="150000" class="w-full h-3 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-primary">
+                            <div class="mt-4 p-4 bg-blue-50 rounded-xl flex gap-3 text-sm text-blue-700 border border-blue-100">
+                                <span class="material-symbols-rounded text-lg">info</span>
+                                <p>Considere a média bruta dos últimos 3 meses (Consultas + Procedimentos + Exames).</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between items-end mb-4">
+                                <label class="text-sm font-black text-slate-500 uppercase tracking-widest">Desperdício Operacional</label>
+                                <div class="flex items-center gap-1 border-b-2 border-rose-500/20 focus-within:border-rose-500 transition-colors">
+                                    <input type="text" id="input-desperdicio" value="15" class="w-full text-3xl font-black text-rose-500 bg-transparent border-none p-0 focus:ring-0 text-right">
+                                    <span class="text-xl font-black text-rose-500/50">%</span>
+                                </div>
+                            </div>
+                            <input type="range" id="calc-desperdicio" min="0" max="100" step="1" value="15" class="w-full h-3 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-rose-500">
+                            <div class="mt-4 p-4 bg-rose-50 rounded-xl flex gap-3 text-sm text-rose-700 border border-rose-100">
+                                <span class="material-symbols-rounded text-lg">warning</span>
+                                <p><strong>Como estimar?</strong> Soma aproximada de: Taxa de No-Show + Glosas de Convênio + Horários vagos na agenda + Retrabalho administrativo.</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between items-end mb-4">
+                                <label class="text-sm font-black text-slate-500 uppercase tracking-widest">Margem Líquida Atual</label>
+                                <div class="flex items-center gap-1 border-b-2 border-slate-900/20 focus-within:border-slate-900 transition-colors">
+                                    <input type="text" id="input-margem" value="10" class="w-full text-3xl font-black text-slate-900 bg-transparent border-none p-0 focus:ring-0 text-right">
+                                    <span class="text-xl font-black text-slate-900/50">%</span>
+                                </div>
+                            </div>
+                            <input type="range" id="calc-margem" min="0" max="100" step="1" value="10" class="w-full h-3 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-slate-900">
+                            <p class="mt-4 text-xs text-slate-400 font-medium italic">Quanto sobra no caixa após pagar todos os custos fixos, variáveis e impostos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 space-y-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-background-dark p-8 rounded-[2rem] text-white overflow-hidden relative group">
+                            <div class="absolute -right-10 -top-10 w-40 h-40 bg-primary/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
+                            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Dinheiro "Na Mesa" (Anual)</p>
+                            <h3 id="result-dinheiro-mesa" class="text-4xl font-black text-green-400 mb-2">R$ 162.000</h3>
+                            <p class="text-slate-500 text-sm">Valor recuperável com LSS 4.0</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-xl relative group">
+                            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Nova Margem Projetada</p>
+                            <h3 id="result-nova-margem" class="text-4xl font-black text-primary mb-2">19.0%</h3>
+                            <div class="inline-flex items-center gap-2 px-3 py-1 bg-green-50 text-green-600 rounded-full text-xs font-bold">
+                                <span class="material-symbols-rounded text-sm">rocket_launch</span>
+                                Crescimento Otimizado
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 md:p-10 rounded-[2.5rem] border border-slate-100 shadow-xl relative min-h-[400px]">
+                        <div class="flex justify-between items-center mb-8">
+                            <h4 class="font-bold text-slate-900">Projeção de Lucro Acumulado (12 Meses)</h4>
+                            <span class="text-xs font-bold px-3 py-1 bg-slate-100 text-slate-500 rounded-lg">Cenário Otimizado</span>
+                        </div>
+                        <div class="h-[300px] w-full">
+                            <canvas id="lineChart"></canvas>
+                        </div>
+                        <div class="flex justify-center gap-8 mt-6">
+                            <div class="flex items-center gap-2 text-xs font-bold text-slate-400">
+                                <span class="w-3 h-3 rounded-full bg-slate-300"></span> Operação Atual
+                            </div>
+                            <div class="flex items-center gap-2 text-xs font-bold text-primary">
+                                <span class="w-3 h-3 rounded-full bg-primary"></span> Operação LSS 4.0
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-32 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div>
+                    <h2 class="text-4xl font-black text-slate-900 mb-6">O Salto de Maturidade</h2>
+                    <p class="text-slate-600 text-lg mb-10 leading-relaxed">Veja a diferença visual entre uma clínica tradicional (reativa) e uma clínica LSS 4.0 (preditiva e eficiente).</p>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-5 p-6 rounded-2xl border border-slate-100 hover:bg-white hover:shadow-xl transition-all cursor-default group">
+                            <div class="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center text-slate-400 group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-rounded">trending_down</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 mb-1">Antes: Apagando Incêndios</h4>
+                                <p class="text-sm text-slate-500">Altas taxas de glosa, espera longa, marketing sem medir retorno.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-5 p-6 rounded-2xl bg-primary text-white shadow-xl shadow-primary/20 group">
+                            <div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center text-white scale-110">
+                                <span class="material-symbols-rounded">trending_up</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Depois: Crescimento Previsível</h4>
+                                <p class="text-sm text-white/80">Processos fluidos, equipe engajada, pacientes fiéis (Alto LTV).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-10 rounded-[3rem] border border-slate-100 shadow-2xl relative min-h-[450px] flex items-center justify-center">
+                    <div class="w-full h-full max-w-[400px] max-h-[400px]">
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                    <div class="absolute bottom-8 left-0 right-0 flex justify-center gap-8">
+                         <div class="flex items-center gap-2 text-xs font-bold text-slate-400">
+                                <span class="w-3 h-3 rounded-full bg-slate-300"></span> Clínica Tradicional
+                            </div>
+                            <div class="flex items-center gap-2 text-xs font-bold text-primary">
+                                <span class="w-3 h-3 rounded-full bg-primary"></span> Clínica LSS 4.0
+                            </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="space-y-4">
-          <details
-            class="group bg-slate-800/30 rounded-lg border border-white/5 overflow-hidden"
-          >
-            <summary
-              class="flex justify-between items-center font-medium cursor-pointer p-6"
-            >
-              <span>Como vocês garantem resultados mensuráveis?</span>
-              <span class="transition group-open:rotate-180">
-                <span class="material-icons-round text-slate-400">add</span>
-              </span>
-            </summary>
-            <div class="text-slate-400 px-6 pb-6">
-              Utilizamos uma metodologia baseada em dados. Começamos com um
-              diagnóstico profundo (auditoria), definimos KPIs claros e
-              implementamos ciclos de melhoria contínua (Sprints).
-            </div>
-          </details>
-          <details
-            class="group bg-slate-800/30 rounded-lg border border-white/5 overflow-hidden"
-          >
-            <summary
-              class="flex justify-between items-center font-medium cursor-pointer p-6"
-            >
-              <span>Qual o investimento para trabalhar com a LeanHealth?</span>
-              <span class="transition group-open:rotate-180">
-                <span class="material-icons-round text-slate-400">add</span>
-              </span>
-            </summary>
-            <div class="text-slate-400 px-6 pb-6">
-              Nossos projetos são personalizados baseados no tamanho e
-              necessidade da sua operação. Agende uma análise gratuita para
-              receber uma proposta adequada ao seu momento.
-            </div>
-          </details>
-          <details
-            class="group bg-slate-800/30 rounded-lg border border-white/5 overflow-hidden"
-          >
-            <summary
-              class="flex justify-between items-center font-medium cursor-pointer p-6"
-            >
-              <span>Quanto tempo leva para ver os primeiros resultados?</span>
-              <span class="transition group-open:rotate-180">
-                <span class="material-icons-round text-slate-400">add</span>
-              </span>
-            </summary>
-            <div class="text-slate-400 px-6 pb-6">
-              Geralmente, identificamos "quick wins" (ganhos rápidos) nas
-              primeiras 2 semanas. Projetos estruturais costumam mostrar impacto
-              significativo no DRE entre 30 a 60 dias.
-            </div>
-          </details>
-          <details
-            class="group bg-slate-800/30 rounded-lg border border-white/5 overflow-hidden"
-          >
-            <summary
-              class="flex justify-between items-center font-medium cursor-pointer p-6"
-            >
-              <span>Vocês trabalham com que tipo de empresa?</span>
-              <span class="transition group-open:rotate-180">
-                <span class="material-icons-round text-slate-400">add</span>
-              </span>
-            </summary>
-            <div class="text-slate-400 px-6 pb-6">
-              Focamos em Clínicas, Hospitais, Healthtechs e SaaS B2B no setor de
-              saúde que buscam escalar ou otimizar processos ineficientes.
-            </div>
-          </details>
-        </div>
-      </div>
     </section>
-    <footer class="bg-black text-white py-12 border-t border-white/10">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Modern GLX Footer -->  
-      <div class="border-t border-white/10 pt-12">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-          <!-- GLX Minimal Logo -->
-          <div class="flex items-center gap-3">
-            <img 
-              src="img/glx-logo.png" 
-              alt="GLX Logo" 
-              class="w-10 h-10 rounded-full object-cover"
-            />
-            <span class="font-black text-lg text-white">GLX <span class="font-light">PARTNERS</span></span>
-          </div>
-          
-          <!-- Copyright -->
-          <p class="text-xs text-slate-500">
-            © 2025 GLX Partners. Todos os direitos reservados.
-          </p>
-         
-          <!-- Contact Link -->
-          <a 
-            href="#contact" 
-            class="text-primary hover:text-violet-400 transition-colors text-sm font-medium">
-            Fale conosco
-          </a>
+
+    <section class="py-24 bg-background-dark relative overflow-hidden" id="contato">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-secondary to-accent"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+                <div>
+                    <h2 class="text-5xl font-black text-white mb-8 leading-tight">Vamos desenhar o futuro da sua gestão?</h2>
+                    <p class="text-slate-400 text-lg mb-12">Receba uma pré-auditoria gratuita. Nossos consultores sêniores analisarão seus principais desafios operacionais.</p>
+                    <div class="space-y-8">
+                        <div class="flex items-center gap-4 group opacity-80 cursor-not-allowed">
+                            <div class="w-14 h-14 rounded-2xl bg-green-500/10 flex items-center justify-center text-green-500 border border-green-500/20 grayscale">
+                                <span class="material-symbols-rounded">phone_in_talk</span>
+                            </div>
+                            <div>
+                                <p class="text-slate-500 text-sm font-bold uppercase tracking-widest">WhatsApp GLX</p>
+                                <p class="text-slate-400 text-xl font-bold">(11) 94422-3257</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 group opacity-80 cursor-not-allowed">
+                            <div class="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-primary border border-white/10 grayscale">
+                                <span class="material-symbols-rounded">email</span>
+                            </div>
+                            <div>
+                                <p class="text-slate-500 text-sm font-bold uppercase tracking-widest">Email Comercial</p>
+                                <p class="text-slate-400 text-xl font-bold">contato@glxpartners.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 md:p-12 rounded-[2rem] shadow-2xl">
+                    <form id="contactForm" class="space-y-5">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Nome Completo</label>
+                                <input type="text" name="nome" required class="w-full bg-slate-50 border-slate-200 rounded-xl px-4 py-3 focus:ring-primary focus:border-primary transition-all" placeholder="Seu nome">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Cargo</label>
+                                <input type="text" name="cargo" required class="w-full bg-slate-50 border-slate-200 rounded-xl px-4 py-3 focus:ring-primary focus:border-primary transition-all" placeholder="Ex: Diretor Hospitalar">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">E-mail Corporativo</label>
+                            <input type="email" name="email" required class="w-full bg-slate-50 border-slate-200 rounded-xl px-4 py-3 focus:ring-primary focus:border-primary transition-all" placeholder="voce@empresa.com.br">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Qual o principal desafio hoje?</label>
+                            <select name="desafio" required class="w-full bg-slate-50 border-slate-200 rounded-xl px-4 py-3 focus:ring-primary focus:border-primary transition-all">
+                                <option value="Alto tempo de espera">Alto tempo de espera</option>
+                                <option value="Custos operacionais elevados">Custos operacionais elevados</option>
+                                <option value="Baixa adesão tecnológica da equipe">Baixa adesão tecnológica da equipe</option>
+                                <option value="Gargalos no faturamento">Gargalos no faturamento</option>
+                                <option value="Outros">Outros</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Mensagem (opcional)</label>
+                            <textarea rows="4" name="mensagem" class="w-full bg-slate-50 border-slate-200 rounded-xl px-4 py-3 focus:ring-primary focus:border-primary transition-all" placeholder="Conte um pouco sobre sua operação..."></textarea>
+                        </div>
+                        <button type="submit" id="submitBtn" class="w-full bg-primary hover:bg-violet-600 text-white font-black py-4 rounded-xl shadow-lg shadow-primary/30 transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed">
+                            <span id="btnText">Enviar Solicitação de Análise</span>
+                            <span id="btnSpinner" class="spinner hidden"></span>
+                            <span id="btnIcon" class="material-symbols-rounded">send</span>
+                        </button>
+                        <div class="text-center text-slate-400 text-sm font-medium">ou</div>
+                        <a href="https://wa.me/5511944223257?text=Ol%C3%A1%2C%20vim%20pela%20glx" target="_blank" id="whatsappBtn" class="whatsapp-link w-full bg-green-500 hover:bg-green-600 text-white font-black py-4 rounded-xl shadow-lg shadow-green-500/30 transition-all flex items-center justify-center gap-2">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            Enviar via WhatsApp
+                        </a>
+                        <p id="formMessage" class="text-center text-sm font-medium hidden"></p>
+                    </form>
+                </div>
+            </div>
         </div>
-      </div>
-      </div>
+    </section>
+
+    <section class="py-24 bg-white" id="faq">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-primary font-bold uppercase tracking-widest text-sm">FAQ</span>
+                <h2 class="mt-4 text-4xl font-black text-slate-900 leading-tight">Dúvidas Frequentes</h2>
+            </div>
+            <div class="space-y-4">
+                <details class="group p-6 rounded-2xl border border-slate-100 bg-slate-50 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex items-center justify-between cursor-pointer">
+                        <h3 class="font-bold text-slate-900">Em quanto tempo vejo resultados?</h3>
+                        <span class="material-symbols-rounded text-slate-400 group-open:rotate-180 transition-transform">expand_more</span>
+                    </summary>
+                    <p class="mt-4 text-slate-600 leading-relaxed">Ganhos de 'Quick Wins' são observados já nas primeiras 4 semanas após o diagnóstico. Projetos estruturais costumam atingir seu pico de ROI entre 6 a 12 meses.</p>
+                </details>
+                <details class="group p-6 rounded-2xl border border-slate-100 bg-slate-50 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex items-center justify-between cursor-pointer">
+                        <h3 class="font-bold text-slate-900">Vocês atendem clínicas de pequeno porte?</h3>
+                        <span class="material-symbols-rounded text-slate-400 group-open:rotate-180 transition-transform">expand_more</span>
+                    </summary>
+                    <p class="mt-4 text-slate-600 leading-relaxed">Sim, temos um modelo de consultoria 'Lean Express' focado em clínicas especializadas que buscam escalabilidade e organização de processos.</p>
+                </details>
+                <details class="group p-6 rounded-2xl border border-slate-100 bg-slate-50 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex items-center justify-between cursor-pointer">
+                        <h3 class="font-bold text-slate-900">É necessário trocar meu software de gestão?</h3>
+                        <span class="material-symbols-rounded text-slate-400 group-open:rotate-180 transition-transform">expand_more</span>
+                    </summary>
+                    <p class="mt-4 text-slate-600 leading-relaxed">Não obrigatoriamente. Nossa metodologia foca no processo. Se o software atual for um limitador, sugerimos integrações ou melhorias, mas o foco é a eficiência do fluxo de trabalho.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-background-dark text-white pt-20 pb-10 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-3 mb-6">
+                        <img src="img/glx-logo.png" alt="GLX Partners" class="h-8 w-auto">
+                        <span class="font-extrabold text-xl tracking-tighter">GLX <span class="text-primary">Partners</span></span>
+                    </div>
+                    <p class="text-slate-400 max-w-sm mb-6">Liderando a transformação da saúde no Brasil através de processos inteligentes e dados precisos.</p>
+                    <div class="flex gap-4">
+                        <a href="https://www.linkedin.com/company/glxpartners/posts/?feedView=all" target="_blank" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors text-slate-400 hover:text-white">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 uppercase text-xs tracking-widest text-slate-500">Links Rápidos</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Início</a></li>
+                        <li><a href="#servicos" class="hover:text-white transition-colors">Serviços</a></li>
+                        <li><a href="#cases" class="hover:text-white transition-colors">Estudos de Caso</a></li>
+                        <li><a href="#contato" class="hover:text-white transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 uppercase text-xs tracking-widest text-slate-500">Legal</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Privacidade</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Termos de Uso</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Trabalhe Conosco</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500 uppercase tracking-widest">
+                <p>© 2024 GLX Partners. Todos os direitos reservados.</p>
+                <p>CNPJ: 00.000.000/0001-00 | São Paulo, SP</p>
+            </div>
+        </div>
     </footer>
-    <a
-      id="scrollToTop"
-      class="fixed bottom-8 right-8 bg-slate-800 text-white p-3 rounded-full shadow-lg hover:bg-slate-700 transition-all z-40 border border-slate-700 opacity-0 translate-y-10 pointer-events-none"
-      href="#"
-    >
-      <span class="material-icons-round">arrow_upward</span>
-    </a>
-    <!-- 
-      ============================================
-      CHAT WIDGET - GLX AI ASSISTANT (LUNA)
-      ============================================
-      TODO: Configure email to forward messages to GLX support:
-      Email: contato@glxpartners.com.br
-      
-      To enable email forwarding, integrate with:
-      - EmailJS (emailjs.com) - for frontend-only solution
-      - Or backend endpoint to send emails via SMTP
-      ============================================
-    -->
-    
-    <!-- Chat Toggle Button (Left Side) -->
-    <button 
-      id="chatToggle"
-      class="fixed bottom-8 left-8 bg-primary text-white p-4 rounded-full shadow-xl hover:bg-violet-600 transition-all z-50 hover:scale-110 group"
-      aria-label="Abrir chat de suporte"
-    >
-      <span class="material-icons-round text-2xl" id="chatIcon">chat</span>
-      <span class="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse"></span>
-    </button>
-    
-    <!-- Chat Window (Mobile Optimized) -->
-    <div 
-      id="chatWindow" 
-      class="fixed bottom-24 left-4 right-4 sm:left-8 sm:right-auto w-auto sm:w-96 max-w-[90vw] sm:max-w-md bg-white rounded-2xl shadow-2xl z-50 overflow-hidden transform scale-0 opacity-0 origin-bottom transition-all duration-200 border border-slate-200"
-    >
-      <!-- Chat Header -->
-      <div class="bg-gradient-to-r from-primary to-violet-600 p-4 text-white">
-        <div class="flex items-center gap-3">
-          <div class="relative">
-            <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-lg font-bold">
-              🌙
-            </div>
-            <span class="absolute bottom-0 right-0 w-3 h-3 bg-green-400 rounded-full border-2 border-primary"></span>
-          </div>
-          <div>
-            <p class="font-bold text-sm">Luna</p>
-            <p class="text-xs opacity-80">Assistente Virtual GLX</p>
-          </div>
-          <button id="chatClose" class="ml-auto hover:bg-white/20 p-1 rounded-full transition-colors">
-            <span class="material-icons-round text-sm">close</span>
-          </button>
-        </div>
-      </div>
-      
-      <!-- Chat Messages -->
-      <div id="chatMessages" class="h-72 overflow-y-auto p-4 space-y-3 bg-slate-50">
-        <!-- Welcome message -->
-        <div class="flex gap-2">
-          <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-sm shrink-0">🌙</div>
-          <div class="bg-white rounded-2xl rounded-tl-sm p-3 shadow-sm max-w-[80%]">
-            <p class="text-sm text-slate-700">Olá! 👋 Sou a <strong>Luna</strong>, assistente virtual da GLX Partners.</p>
-            <p class="text-sm text-slate-700 mt-2">Como posso ajudar você hoje? Pode me perguntar sobre:</p>
-            <ul class="text-xs text-slate-600 mt-2 space-y-1">
-              <li>• Metodologia GLX / Lean Six Sigma</li>
-              <li>• Serviços de consultoria</li>
-              <li>• Calculadora de ROI</li>
-              <li>• Agendamento de análise</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Chat Input -->
-      <div class="p-3 border-t border-slate-200 bg-white">
-        <div class="flex gap-2">
-          <input 
-            type="text" 
-            id="chatInput" 
-            placeholder="Digite sua mensagem..."
-            class="flex-1 px-4 py-2 text-sm border border-slate-200 rounded-full focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
-          />
-          <button 
-            id="chatSend"
-            class="bg-primary text-white p-2 rounded-full hover:bg-violet-600 transition-colors"
-          >
-            <span class="material-icons-round text-sm">send</span>
-          </button>
-        </div>
-      </div>
+
+    <div class="md:hidden fixed bottom-6 left-6 right-6 z-50 flex gap-2">
+        <a href="https://wa.me/5511944223257?text=Ol%C3%A1%2C%20vim%20pela%20glx" target="_blank" class="whatsapp-link flex-1 flex items-center justify-center gap-2 bg-green-500 text-white font-black py-4 rounded-2xl shadow-2xl shadow-green-500/50">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
+        </a>
+        <a href="#contato" class="flex-1 flex items-center justify-center gap-2 bg-primary text-white font-black py-4 rounded-2xl shadow-2xl shadow-primary/50">
+            <span class="material-symbols-rounded">calendar_today</span>
+            Contato
+        </a>
     </div>
 
-    <!-- Animations Script -->
+    <script src="js/email-config.js"></script>
+    
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const btnSpinner = document.getElementById('btnSpinner');
+            const btnIcon = document.getElementById('btnIcon');
+            const formMessage = document.getElementById('formMessage');
+            
+            const formData = new FormData(this);
+            const contactData = {
+                nome: formData.get('nome'),
+                cargo: formData.get('cargo'),
+                email: formData.get('email'),
+                desafio: formData.get('desafio'),
+                mensagem: formData.get('mensagem') || 'Não informada'
+            };
+            
+            submitBtn.disabled = true;
+            btnText.textContent = 'Enviando...';
+            btnSpinner.classList.remove('hidden');
+            btnIcon.classList.add('hidden');
+            formMessage.classList.add('hidden');
+            
+            sendContactEmail(contactData)
+                .then(function(response) {
+                    window.location.href = 'thank-you.html';
+                })
+                .catch(function(error) {
+                    if (error.message && error.message.includes('Configuração')) {
+                        formMessage.textContent = 'Configuração de e-mail pendente no sistema.';
+                    } else {
+                        formMessage.textContent = 'Ocorreu um erro ao enviar.';
+                    }
+                    formMessage.classList.remove('hidden');
+                    formMessage.classList.add('text-red-500', 'font-bold');
+                    submitBtn.disabled = false;
+                    btnText.textContent = 'Enviar Solicitação de Análise';
+                    btnSpinner.classList.add('hidden');
+                    btnIcon.classList.remove('hidden');
+                });
+        });
+
+        document.querySelectorAll('.whatsapp-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const url = this.getAttribute('href');
+                window.open(url, '_blank');
+                setTimeout(() => {
+                    window.location.href = 'thank-you.html?source=whatsapp';
+                }, 500);
+            });
+        });
+    </script>
+
+    <div id="chatWidget" class="fixed bottom-6 right-6 z-50 flex flex-col items-end print:hidden">
+        <div id="chatWindow" class="bg-white dark:bg-slate-900 w-80 h-[450px] mb-4 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 flex flex-col transform origin-bottom-right scale-0 opacity-0 transition-all duration-300">
+            <div class="bg-primary p-4 rounded-t-2xl flex justify-between items-center shadow-md">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-sm">🤖</div>
+                    <div>
+                        <h3 class="font-bold text-white leading-tight">Luna AI</h3>
+                        <p class="text-xs text-white/80">Assistente GLX</p>
+                    </div>
+                </div>
+                <button id="chatClose" class="text-white/80 hover:text-white hover:bg-white/20 rounded-full p-2 transition-colors">
+                    <span class="material-symbols-rounded text-lg">close</span>
+                </button>
+            </div>
+            
+            <div id="chatMessages" class="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-50 dark:bg-slate-800/50 scrollbar-thin">
+                <div class="flex gap-2">
+                    <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-sm shrink-0 border border-primary/20">🤖</div>
+                    <div class="bg-white dark:bg-slate-700 p-3 rounded-2xl rounded-tl-sm shadow-sm border border-slate-100 dark:border-slate-600 max-w-[85%]">
+                        <p class="text-sm text-slate-600 dark:text-slate-300">
+                            Olá! Sou a Luna. 🌙<br><br>
+                            • Digite <strong>"dúvida"</strong> se precisa de suporte.<br>
+                            • Digite <strong>"contratar"</strong> para falar de negócios.<br><br>
+                            Como posso ajudar?
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-3 border-t border-slate-100 dark:border-slate-700 bg-white dark:bg-slate-900 rounded-b-2xl">
+                <div class="flex gap-2 items-center bg-slate-100 dark:bg-slate-800 rounded-full px-4 py-2 ring-1 ring-slate-200 dark:ring-slate-700 focus-within:ring-2 focus-within:ring-primary transition-all">
+                    <input type="text" id="chatInput" placeholder="Digite sua mensagem..." class="flex-1 bg-transparent border-none p-0 text-sm focus:ring-0 outline-none text-slate-700 dark:text-slate-200 placeholder:text-slate-400">
+                    <button id="chatSend" class="text-primary hover:text-violet-600 p-1 transition-colors">
+                        <span class="material-symbols-rounded">send</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <button id="chatToggle" class="bg-primary hover:bg-violet-600 text-white w-14 h-14 rounded-full shadow-lg shadow-primary/30 flex items-center justify-center transition-all hover:scale-110 active:scale-95 group relative z-50">
+            <span id="chatIcon" class="material-symbols-rounded text-2xl group-hover:rotate-12 transition-transform">chat</span>
+        </button>
+    </div>
+
+    
+    <!-- Core Application Scripts -->
+    <script src="js/security-manager.js"></script>
+    <script src="js/scroll-animations.js"></script>
+    <script src="js/web-vitals-tracker.js"></script>
     <script src="js/animations.js"></script>
-  </body>
+    <script src="js/calculator.js"></script>
+    <script src="js/animation-loader.js"></script>
+    <script src="js/advanced-animations.js"></script>
+    <script src="js/sliding-number.js"></script>
+    <script src="js/marquee.js"></script>
+    
+    <style>
+        /* Magic Bento Styles */
+        .bento-card {
+            /* Variaveis controladas pelo JS */
+            --mouse-x: 50%;
+            --mouse-y: 50%;
+        }
+        
+        .bento-glow {
+            background: radial-gradient(
+                600px circle at var(--mouse-x) var(--mouse-y),
+                rgba(124, 58, 237, 0.06), 
+                transparent 40%
+            );
+        }
+    </style>
+    <!-- Lanyard (Three.js Module) -->
+    <script type="module">
+        import { LanyardBadge } from './js/lanyard.js'; // Ensure default export or shim
+        // Since my snippet exported to window via side-effect, we can just import the file
+    </script>
+    <script type="module">
+        import './js/lanyard.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // Start Lanyard if wrapper exists
+            if(document.getElementById('lanyard-container')) {
+                // Initialize globally exposed class
+                if (window.LanyardBadge) {
+                    new window.LanyardBadge('lanyard-container', { 
+                        texture: 'img/glx-badge_v2.jpg' 
+                    });
+                }
+            }
+        });
+    </script>
+    <!-- Performance Monitoring -->
+    <script>
+        // Inicializar sistemas
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                if (window.webVitalsTracker) {
+                    const vitals = window.webVitalsTracker.getSummary();
+                    console.log('%c📊 Web Vitals Summary', 'background: #7c3aed; color: white; padding: 4px 8px; border-radius: 4px;');
+                    console.table(vitals);
+                }
+            }, 3000);
+        });
+    </script>
+    <!-- Scripts & Governance Layer -->
+    <script src="js/web-vitals-tracker.js" defer></script>
+    <script src="js/count-up.js" defer></script>
+    <script src="js/split-text.js" defer></script>
+    <script src="js/magic-bento.js" defer></script>
+    <script src="js/masonry.js" defer></script>
+    <script src="js/folder.js" defer></script>
+    <script src="js/sliding-number.js" defer></script>
+    <script src="js/marquee.js" defer></script>
+    <script src="js/spotlight.js" defer></script>
+
+    <!-- SRE: Centralized Initialization with Error Boundaries -->
+    <script type="module">
+        // Safe Import for Three.js Lanyard
+        import './js/lanyard.js';
+
+        // SRE Logger
+        const SystemLogger = {
+            log: (component, status) => console.log(`[SYSTEM::${component}] ${status}`),
+            error: (component, err) => console.error(`[SYSTEM::${component}::ERROR]`, err)
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            SystemLogger.log('CORE', 'Initializing Components...');
+
+            // 1. Initialize Lanyard (With Graceful Fallback)
+            try {
+                if (document.getElementById('lanyard-container') && window.LanyardBadge && window.innerWidth > 1024) {
+                    new window.LanyardBadge('lanyard-container', { texture: 'img/glx-badge_v2.jpg' });
+                    SystemLogger.log('LANYARD', 'Active');
+                } else {
+                    SystemLogger.log('LANYARD', 'Skipped (Mobile or Missing)');
+                }
+            } catch (e) {
+                SystemLogger.error('LANYARD', e);
+                // Graceful degradation: Remove container to avoid empty box
+                const wrapper = document.getElementById('lanyard-wrapper');
+                if(wrapper) wrapper.style.display = 'none';
+            }
+
+            // 2. Initialize Folder (With Error Boundary)
+            try {
+                 if (document.getElementById('folder-container') && typeof FolderComponent !== 'undefined') {
+                    // Auto-init handled by script, but we log check
+                    SystemLogger.log('FOLDER', 'Active');
+                 }
+            } catch (e) {
+                SystemLogger.error('FOLDER', e);
+            }
+
+            // 3. Initialize Masonry
+            try {
+                if(document.getElementById('masonry-grid') && typeof MasonryGallery !== 'undefined') {
+                     // Auto-init handled by script
+                     SystemLogger.log('MASONRY', 'Active');
+                }
+            } catch (e) {
+                SystemLogger.error('MASONRY', e);
+            }
+        });
+    </script>
+</body>
 </html>
