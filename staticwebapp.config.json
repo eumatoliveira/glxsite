@@ -1,0 +1,14 @@
+{
+  "trailingSlash": "auto",
+  "navigationFallback": {
+    "rewrite": "/index.html"
+  },
+  "globalHeaders": {
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "Content-Security-Policy": "default-src 'self' https: 'unsafe-inline' 'unsafe-eval'; img-src 'self' data: https:;"
+  },
+  "mimeTypes": {
+    ".json": "application/json"
+  }
+}

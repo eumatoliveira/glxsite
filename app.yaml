@@ -1,0 +1,23 @@
+runtime: python39
+instance_class: F1
+
+handlers:
+- url: /js
+  static_dir: js
+
+- url: /css
+  static_dir: css
+
+- url: /img
+  static_dir: img
+
+- url: /components
+  static_dir: components
+
+- url: /(.*)
+  static_files: \1
+  upload: (.*)
+
+- url: /
+  static_files: index.html
+  upload: index.html
