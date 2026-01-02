@@ -1,9 +1,9 @@
 /**
- * Spotlight Card - Vanilla JS Port
- * Based on user-provided React component.
- * Usage:
- * 1. Add class "spotlight-card" to a container.
- * 2. Add class "spotlight-overlay" to an inner empty div (absolute inset-0).
+ * 🕯️ SPOTLIGHT CARD - ARCHITECTURE ENGINE
+ * Role: Interactive Card Feedback / Radial Tracking
+ * Patterns: Observer Pattern (MutationObserver), Event Delegation
+ * Governance: Performance Stable | Low Memory Memory Footprint
+ * Audit: @[/arquiteturastaff] @[/autogovernancadeia]
  */
 
 class SpotlightManager {

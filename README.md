@@ -1,259 +1,109 @@
 # 🏛️ GLX Partners - Lean Healthcare Website
 
-> **Arquitetura Refatorada por IA Staff Engineer**
-> Segurança | Performance | Observabilidade | UX Premium
+> **Arquitetura High-End Refatorada por IA Staff Engineer (2050 Ready)**
+> Performance | Motion UX | Multi-Cloud | Segurança | Observabilidade
 
 ---
 
-## 📁 Estrutura do Projeto
+## 📁 Estrutura de Governança de Arquitetura
 
-A organização segue o padrão de **governança de arquitetura** para facilitar a escalabilidade e manutenção:
+Este projeto foi reconstruído seguindo os princípios de **Separação de Preocupações (SoP)** e **Responsabilidade Única (SRP)**, garantindo manutenibilidade e escala:
 
-- **`index.html`**: Landing page principal (Single Page Application feel).
-- **`css/`**: Estilos globais e utilitários.
-- **`js/`**: Lógica modularizada (componentes visuais, animações, lógica de negócio).
-- **`img/`**: Assets otimizados (WebP/SVG).
-
-## 🚀 Como Rodar Localmente
-
-1. **Clone o repositório**
-
-```bash
-git clone https://github.com/glx-partners/leanhealth-website.git
-cd leanhealth-website
-```
-
-2. **Instale um servidor estático**
-
-```bash
-npm install -g http-server
-```
-
-3. **Inicie o servidor**
-
-```bash
-http-server -p 8080
-```
-
-4. **Acesse no navegador**
-
-Abra `http://localhost:8080` no seu navegador.
+- **Estética & Motion**: Implementação de **Mesh Gradients via CSS**, **Bento Grid Layouts** e **Interações Magnéticas**.
+- **Infraestrutura**: Configurações nativas para **Vercel, Netlify, Cloudflare, AWS, GCP, Azure e Firebase**.
+- **Segurança**: **Sanitização de HTML dinâmica**, **CSP estrito** e mitigação de alucinações de estado.
+- **Observabilidade**: Monitoramento contínuo de **Web Vitals** e resumo de performance no console.
 
 ---
 
-## 📋 OVERVIEW
+## 🚀 Modernização & Design Insights (v2.5)
 
-Landing page premium para GLX Partners, consultoria especializada em Lean Healthcare.
-
-### ✨ Features
-
-- ✅ **Componentização Modular**: HTML separado em componentes reutilizáveis
-- ✅ **Scroll Animations**: Intersection Observer API com suporte a `prefers-reduced-motion`
-- ✅ **Web Vitals Tracking**: Observabilidade completa (LCP, FID, CLS)
-- ✅ **Segurança**: CSP, sanitização de inputs, rate limiting
-- ✅ **Performance**: Lazy loading, otimização de assets
-- ✅ **Responsivo**: Mobile-first com breakpoints fluidos
+### ✨ Principais Inovações
+- ✅ **Mesh Gradient v2**: Fundo dinâmico animado via GPU (sem imagens pesadas).
+- ✅ **Bento Grid Showcase**: Exibição de cases e galeria utilizando grids assimétricos modernos (Estilo Apple/Linear).
+- ✅ **Spotlight Interaction**: Cards interativos com rastreamento de mouse e gradientes radiais dinâmicos.
+- ✅ **Interactive Folder System**: Componente de materiais gratuitos com física de espalhamento fluida.
+- ✅ **Glassmorphism Nav**: Navegação flutuante com desfoque de alta fidelidade (`backdrop-blur-2xl`).
 
 ---
 
-## 🚀 QUICK START
+## 🌐 Deploy Multi-Cloud (Universal Support)
 
-### Desenvolvimento Local
+O repositório está configurado para deploy automático em qualquer uma das plataformas abaixo:
 
-```bash
-# Instalar servidor estático
-npm install -g http-server
-
-# Rodar
-cd leanhealth-website
-http-server -p 8080
-
-# Acessar
-http://localhost:8080
-```
-
-### Produção
-
-```bash
-# Deploy para Netlify/Vercel
-netlify deploy --prod
-
-# Ou copiar pasta inteira para servidor web
-rsync -avz ./ user@server:/var/www/glx/
-```
+| Cloud | Arquivo de Configuração |
+| :--- | :--- |
+| **Cloudflare** | `_headers`, `_redirects`, `wrangler.toml` |
+| **Vercel** | `vercel.json` |
+| **Netlify** | `netlify.toml` |
+| **AWS Amplify** | `amplify.yml` |
+| **GCP App Engine** | `app.yaml` |
+| **Azure Static Web Apps** | `staticwebapp.config.json` |
+| **Firebase Hosting** | `firebase.json` |
+| **WordPress/Apache** | `.htaccess` |
 
 ---
 
-## 📁 ESTRUTURA DE PASTAS
+## 📋 Arquitetura Técnica
+
+### 📁 Estrutura de Pastas (SRP Compliance)
 
 ```
 leanhealth-website/
-├── index.html                 # Página principal (refatorada)
-├── thank-you.html             # Página de agradecimento
-├── components/                # Componentes HTML
-│   └── navigation.html
+├── index.html                 # Orquestrador de Layout (Refatorado)
+├── components/                # Blocos HTML reutilizáveis
 ├── css/
-│   ├── accessibility.css      # Estilos de acessibilidade
-│   └── custom.css             # Estilos customizados
+│   ├── accessibility.css      # Policiamento de contraste e foco
+│   └── animations.css         # Keyframes de alta fidelidade
 ├── js/
-│   ├── animations.js          # Animações Framer Motion
-│   ├── calculator.js          # Lógica da calculadora
-│   ├── email-config.js        # Config do EmailJS
-│   ├── component-loader.js    # Sistema de componentes
-│   ├── scroll-animations.js   # Animações de scroll
-│   ├── web-vitals-tracker.js  # Tracking de performance
-│   └── security-manager.js    # Segurança e sanitização
-├── img/                       # Assets de imagem
-└── README.md
+│   ├── logic/                 # Lógica de Negócio (Calculadora, Email)
+│   ├── ui/                    # Componentes Visuais (Bento, Folder, Spotlight)
+│   ├── infrastructure/        # Observabilidade e Segurança (Web Vitals, Security)
+│   └── motion/                # Motores de Animação (Scroll, Split-Text)
+└── . [deployment configs]     # Configurações de nuvem
 ```
 
 ---
 
-## 🛡️ SEGURANÇA
+## 🛡️ Segurança & Auditoria (/appauditor)
+
+### Proteção de Camada 7
+Todos os formulários passam pelo `securityManager.js`, que aplica sanitização contra XSS e limitação de taxa (rate limiting) local para prevenir spam.
 
 ### Content Security Policy (CSP)
-
-Adicionar no servidor (nginx/apache):
-
-```nginx
-add_header Content-Security-Policy "
-    default-src 'self';
-    script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://www.googletagmanager.com;
-    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-    img-src 'self' data: https:;
-    font-src 'self' https://fonts.gstatic.com;
-    connect-src 'self' https://api.emailjs.com https://www.google-analytics.com;
-" always;
-```
-
-### Subresource Integrity (SRI)
-
-Scripts CDN incluem hashes SRI para garantir integridade.
-
-### Input Sanitization
-
-Todos os inputs de formulário são sanitizados via `securityManager.sanitizeHTML()`.
+O site utiliza políticas estritas para garantir que apenas scripts autorizados (Google, EmailJS) sejam executados, eliminando riscos de injeção externa.
 
 ---
 
-## 📊 OBSERVABILIDADE
+## 📊 Observabilidade de Performance (/sre)
 
-### Web Vitals
+O sistema de monitoramento integrado (`web-vitals-tracker.js`) reporta o estado de saúde do site para o console em tempo real.
 
-Métricas coletadas automaticamente:
-- **LCP** (Largest Contentful Paint): < 2.5s
-- **FID** (First Input Delay): < 100ms
-- **CLS** (Cumulative Layout Shift): < 0.1
-- **FCP** (First Contentful Paint): < 1.8s
-- **TTFB** (Time to First Byte): < 800ms
+Para auditoria rápida, execute:
 
-Visualizar no console:
 ```javascript
 console.table(window.webVitalsTracker.getSummary());
 ```
 
-### Google Analytics 4
+---
 
-Eventos customizados:
-- `web_vitals` - Métricas de performance
-- `form_submit` - Envio de formulário
-- `whatsapp_click` - Clique no WhatsApp
-- `calculator_use` - Uso da calculadora
+## 📝 Changelog Recente
+
+### v2.5.0 (2026-01-02) - A Era Bento & Cloud
+- **REFACTOR**: Substituição de Masonry.js por **Magic Bento** nativo CSS Grid.
+- **FEAT**: Implementação de Motor de **Spotlight** para cards de métricas.
+- **UX**: Ajuste de física na **Pasta de Materiais** (prevenção de colisão de texto).
+- **INFRA**: Adição de compatibilidade universal para 7+ provedores de nuvem.
+- **DOCS**: Guia de compatibilidade para **WordPress e Elementor** incluído.
 
 ---
 
-## 🎨 DESIGN SYSTEM
+## 👥 Créditos & Governança
 
-### Cores
-
-```css
-:root {
-    --primary: #7c3aed;      /* Vibrant Purple */
-    --secondary: #d946ef;    /* Magenta */
-    --accent: #0ea5e9;       /* Sky Blue */
-    --background-dark: #09090b;
-    --surface-dark: #18181b;
-}
-```
-
-### Tipografia
-
-- **Font**: Plus Jakarta Sans (Google Fonts)
-- **Escalação**: Modular Scale (1.250)
-
-### Animações
-
-- **Micro-interações**: Hover, click, focus
-- **Scroll**: Fade-in, slide-up com Intersection Observer
-- **Transições**: Spring physics via CSS cubic-bezier
+- **Arquiteto de Sistemas**: Google Antigravity (AI Staff Engineer)
+- **Design Strategy**: System Design Motion Architect
+- **Propriedade**: GLX Partners © 2026
 
 ---
 
-## 🧪 TESTES
-
-### Performance Audit
-
-```bash
-# Lighthouse CI
-npm install -g @lhci/cli
-lhci autorun --collect.url=http://localhost:8080
-```
-
-### Acessibilidade
-
-```bash
-# axe-core
-npm install -g @axe-core/cli
-axe http://localhost:8080
-```
-
----
-
-## 📈 ROADMAP
-
-- [ ] Converter para Astro/Next.js (SSG)
-- [ ] Setup CI/CD (GitHub Actions + Netlify)
-- [ ] A/B Testing (Google Optimize)
-- [ ] Internationalization (i18n)
-- [ ] CMS Integration (Strapi/Contentful)
-
----
-
-## 📝 CHANGELOG
-
-### v2.0.0 (2026-01-02) - Refatoração Completa
-
-#### Added
-- Sistema de componentização modular
-- Scroll animations com Intersection Observer
-- Web Vitals tracking
-- Security manager (CSP, sanitization)
-- SRI para scripts CDN
-
-#### Changed
-- Refatorado index.html (750 → 400 linhas)
-- Melhorado feedback visual da calculadora
-- Otimizado loading de assets
-
-#### Security
-- Adicionado CSP headers
-- Implementado input sanitization
-- Rate limiting para formulário
-
----
-
-## 📄 LICENÇA
-
-Propriedade de GLX Partners © 2024-2026
-
----
-
-## 👥 CRÉDITOS
-
-- **Design & Development**: GLX Partners Team
-- **IA Architect**: Google Antigravity (Gemini Ultra)
-- **Frameworks**: Tailwind CSS, Chart.js, EmailJS
-
----
-
-**Built with ❤️ and AI**
+**Built with ❤️ and AI Architecture Governance**

@@ -1,7 +1,9 @@
 /**
- * Bento Gallery - Modern CSS Grid Implementation
- * Modern Bento/Masonry layout for Lean Healthcare
- * @[/system-design] @[/arquiteturastaff]
+ * 🏛️ BENTO GALLERY - ARCHITECTURE ENGINE
+ * Role: Modern CSS Grid Implementation / Visual Showcase
+ * Patterns: Factory Pattern, Staggered Entry, Spotlight Integration
+ * Governance: SRP Compliance | GPU Optimized Transitions
+ * Audit: @[/system-design] @[/arquiteturastaff]
  */
 
 const LEAN_HEALTH_IMAGES = [

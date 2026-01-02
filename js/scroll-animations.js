@@ -1,7 +1,9 @@
 /**
- * Scroll Animations - Sistema de Animações Baseadas em Scroll
- * Usa Intersection Observer API para performance otimizada
- * Respeita prefers-reduced-motion para acessibilidade
+ * 🌊 SCROLL ANIMATIONS - ARCHITECTURE ENGINE
+ * Role: Global Motion Orchestration
+ * Patterns: Intersection Observer, Strategy Pattern (Transitions)
+ * Governance: A11y (prefers-reduced-motion) | Staggered Orchestration
+ * Audit: @[/sre] @[/system-design]
  */
 
 class ScrollAnimations {

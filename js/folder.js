@@ -1,6 +1,9 @@
 /**
- * Folder Component - Vanilla JS Implementation
- * Interactive folder that opens on click and reveals items
+ * 📂 FOLDER COMPONENT - ARCHITECTURE ENGINE
+ * Role: Interactive UX / Material Distribution
+ * Patterns: Composition, Event Delegation, Dynamic Transforms
+ * Governance: Accessibility Matched | Collision Detection (Text Overlap Prevention)
+ * Audit: @[/appauditor] @[/system-design]
  */
 
 class FolderComponent {
